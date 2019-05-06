@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[Hello World]]></title>
-    <url>%2F2019%2F05%2F05%2Fhello-world%2F</url>
-    <content type="text"><![CDATA[我如果删掉这个网站就无法生成……]]></content>
+    <title><![CDATA[第一条博客]]></title>
+    <url>%2F2019%2F05%2F06%2FFirst%20Blog%2F</url>
+    <content type="text"><![CDATA[我如果补发一条这么无聊的博客当做第一条博客，那么网站就无法生成……嗯回头我再写一篇详细介绍我的创建过程吧。晚安。]]></content>
+      <categories>
+        <category>Chaos</category>
+      </categories>
+      <tags>
+        <tag>Boring</tag>
+        <tag>First</tag>
+      </tags>
   </entry>
 </search>

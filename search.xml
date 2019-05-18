@@ -1,27 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search>
-  <entry>
-    <title><![CDATA[Learning-Compiler-1]]></title>
-    <url>%2F2019%2F05%2F18%2FLearn%20complier-1%2F</url>
-    <content type="text"><![CDATA[OverviewNoteStrategies: Interpreters(slightly order) Compilers(slightly newer) Difference between interpreters and compilers: Interpreters run programs “as is”: little or no preprocessing Compilers do extensive preprocessing Language Implementations: Low level: C/C++ Higher level: Python Interpreter + “Just In Time”(JIT) compiler: Java History: FORTRAN I Struture of compiler: Lexical analysis Parsing Semantic analysis Optimization Code generation Lexical analysis: First step: recognize words. Divides program text into “words” or “tokens”. Parsing: Understand sentence structure. Parsing = Diagramming Sentences(a tree). Semantic analysis: Understand “meaning”. Compilers perform limited analysis to catch inconsistencies, and many semantic checks besides variable bindings. Optimization: Automatically modify programs to run faster, use less memory and in general, conserve some resource. Code generation: Usually produces assembly code. A translation into another language. Intermediate languages(IL): Many compilers perform translations between successive intermediate forms: All but first and last are intermediate languages internal to the compiler Typically there is 1 IL IL’s generally ordered in descending level of abstraction Highest is source Lowest is assembly IL’s are useful because lower levels expose features hidden by higher levels registers memory layout etc. But lower levels obscure high-level meaning Issues: Language design has big impact on compiler Determines what is easy and hard to compile Course theme: many trade-offs in language design Today’s compiler: The proportions have changed since FORTRAN Early: lexing, parsing most complex, expensive Today: optimization dominates all other phases, lexing and parsing are cheap ReferenceSlides: lecture01 Video: Compiler Stanford 2014]]></content>
+<search> 
+  
+  
+    
+    <entry>
+      <title>Learning-Compiler-1</title>
+      <link href="/2019/05/18/Learn%20complier-1/"/>
+      <url>/2019/05/18/Learn%20complier-1/</url>
+      
+        <content type="html"><![CDATA[<h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p><strong>Strategies</strong>:</p><ul><li>Interpreters(slightly order)</li><li>Compilers(slightly newer)</li></ul><p><strong>Difference</strong> between interpreters and compilers:</p><ul><li>Interpreters run programs “as is”: little or no preprocessing</li><li>Compilers do extensive preprocessing</li></ul><p><strong>Language Implementations</strong>:</p><ul><li>Low level: C/C++</li><li>Higher level: Python</li><li>Interpreter + “Just In Time”(JIT) compiler: Java</li></ul><p>History:</p><p>FORTRAN I</p><p><strong>Struture</strong> of compiler:</p><ol><li>Lexical analysis</li><li>Parsing</li><li>Semantic analysis</li><li>Optimization</li><li>Code generation</li></ol><p>Lexical analysis: First step: recognize words. Divides program text into “words” or “tokens”.</p><p>Parsing: Understand sentence structure. Parsing = Diagramming Sentences(a tree).</p><p>Semantic analysis: Understand “meaning”. Compilers perform limited analysis to catch inconsistencies, and many semantic checks besides variable bindings.</p><p>Optimization: Automatically modify programs to run faster, use less memory and in general, conserve some resource.</p><p>Code generation: Usually produces assembly code. A translation into another language.</p><p><strong>Intermediate languages(IL)</strong>:</p><p>Many compilers perform translations between successive intermediate forms:</p><ul><li>All but first and last are intermediate languages internal to the compiler</li><li>Typically there is 1 IL</li></ul><p>IL’s generally ordered in descending level of abstraction</p><ul><li>Highest is source</li><li>Lowest is assembly</li></ul><p>IL’s are useful because lower levels expose features hidden by higher levels</p><ul><li>registers</li><li>memory layout</li><li>etc.</li></ul><p>But lower levels obscure high-level meaning</p><p>Issues:</p><p>Language design has big impact on compiler</p><ul><li>Determines what is easy and hard to compile</li><li>Course theme: many trade-offs in language design</li></ul><p>Today’s compiler:</p><p>The proportions have changed since FORTRAN</p><ul><li>Early: lexing, parsing most complex, expensive</li><li>Today: optimization dominates all other phases, lexing and parsing are cheap</li></ul><h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p>Slides: <a href="http://web.stanford.edu/class/cs143/lectures/lecture01.pdf" target="_blank" rel="noopener">lecture01</a></p><p>Video: <a href="https://lagunita.stanford.edu/courses/Engineering/Compilers/Fall2014/course/" target="_blank" rel="noopener">Compiler Stanford 2014</a></p>]]></content>
+      
+      
       <categories>
-        <category>Compiler</category>
+          
+          <category> Compiler </category>
+          
       </categories>
-      <tags>
-        <tag>Learning</tag>
-        <tag>Compiler</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[第一条博客]]></title>
-    <url>%2F2019%2F05%2F06%2FFirst%20Blog%2F</url>
-    <content type="text"><![CDATA[我如果不发一条这么无聊的博客当做第一条博客，那么网站就无法生成……嗯回头我再写一篇详细介绍我的创建过程吧。晚安。]]></content>
+      
+      
+        <tags>
+            
+            <tag> Learning </tag>
+            
+            <tag> Compiler </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>第一条博客</title>
+      <link href="/2019/05/06/First%20Blog/"/>
+      <url>/2019/05/06/First%20Blog/</url>
+      
+        <content type="html"><![CDATA[<p>我如果不发一条这么无聊的博客当做第一条博客，那么网站就无法生成……嗯回头我再写一篇详细介绍我的创建过程吧。晚安。</p>]]></content>
+      
+      
       <categories>
-        <category>Chaos</category>
+          
+          <category> Chaos </category>
+          
       </categories>
-      <tags>
-        <tag>Boring</tag>
-        <tag>First</tag>
-      </tags>
-  </entry>
+      
+      
+        <tags>
+            
+            <tag> Boring </tag>
+            
+            <tag> First </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
 </search>

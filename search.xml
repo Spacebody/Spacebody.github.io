@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Learning-Compiler-1]]></title>
+    <url>%2F2019%2F05%2F18%2FLearn%20complier-1%2F</url>
+    <content type="text"><![CDATA[OverviewNoteStrategies: Interpreters(slightly order) Compilers(slightly newer) Difference between interpreters and compilers: Interpreters run programs “as is”: little or no preprocessing Compilers do extensive preprocessing Language Implementations: Low level: C/C++ Higher level: Python Interpreter + “Just In Time”(JIT) compiler: Java History: FORTRAN I Struture of compiler: Lexical analysis Parsing Semantic analysis Optimization Code generation Lexical analysis: First step: recognize words. Divides program text into “words” or “tokens”. Parsing: Understand sentence structure. Parsing = Diagramming Sentences(a tree). Semantic analysis: Understand “meaning”. Compilers perform limited analysis to catch inconsistencies, and many semantic checks besides variable bindings. Optimization: Automatically modify programs to run faster, use less memory and in general, conserve some resource. Code generation: Usually produces assembly code. A translation into another language. Intermediate languages(IL): Many compilers perform translations between successive intermediate forms: All but first and last are intermediate languages internal to the compiler Typically there is 1 IL IL’s generally ordered in descending level of abstraction Highest is source Lowest is assembly IL’s are useful because lower levels expose features hidden by higher levels registers memory layout etc. But lower levels obscure high-level meaning Issues: Language design has big impact on compiler Determines what is easy and hard to compile Course theme: many trade-offs in language design Today’s compiler: The proportions have changed since FORTRAN Early: lexing, parsing most complex, expensive Today: optimization dominates all other phases, lexing and parsing are cheap ReferenceSlides: lecture01 Video: Compiler Stanford 2014]]></content>
+      <categories>
+        <category>Compiler</category>
+      </categories>
+      <tags>
+        <tag>Learning</tag>
+        <tag>Compiler</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[第一条博客]]></title>
     <url>%2F2019%2F05%2F06%2FFirst%20Blog%2F</url>
     <content type="text"><![CDATA[我如果不发一条这么无聊的博客当做第一条博客，那么网站就无法生成……嗯回头我再写一篇详细介绍我的创建过程吧。晚安。]]></content>

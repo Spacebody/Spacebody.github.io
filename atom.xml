@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.yilin.dev/"/>
-  <updated>2019-05-18T06:31:33.026Z</updated>
+  <updated>2019-05-18T07:06:15.982Z</updated>
   <id>https://blog.yilin.dev/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Learning-Compiler-1</title>
+    <title>Learning Compiler 1</title>
     <link href="https://blog.yilin.dev/2019/05/18/Learn%20complier-1/"/>
     <id>https://blog.yilin.dev/2019/05/18/Learn complier-1/</id>
     <published>2019-05-18T04:54:01.472Z</published>
-    <updated>2019-05-18T06:31:33.026Z</updated>
+    <updated>2019-05-18T07:06:15.982Z</updated>
     
     <content type="html"><![CDATA[<h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p><strong>Strategies</strong>:</p><ul><li>Interpreters(slightly order)</li><li>Compilers(slightly newer)</li></ul><p><strong>Difference</strong> between interpreters and compilers:</p><ul><li>Interpreters run programs “as is”: little or no preprocessing</li><li>Compilers do extensive preprocessing</li></ul><p><strong>Language Implementations</strong>:</p><ul><li>Low level: C/C++</li><li>Higher level: Python</li><li>Interpreter + “Just In Time”(JIT) compiler: Java</li></ul><p>History:</p><p>FORTRAN I</p><p><strong>Struture</strong> of compiler:</p><ol><li>Lexical analysis</li><li>Parsing</li><li>Semantic analysis</li><li>Optimization</li><li>Code generation</li></ol><p>Lexical analysis: First step: recognize words. Divides program text into “words” or “tokens”.</p><p>Parsing: Understand sentence structure. Parsing = Diagramming Sentences(a tree).</p><p>Semantic analysis: Understand “meaning”. Compilers perform limited analysis to catch inconsistencies, and many semantic checks besides variable bindings.</p><p>Optimization: Automatically modify programs to run faster, use less memory and in general, conserve some resource.</p><p>Code generation: Usually produces assembly code. A translation into another language.</p><p><strong>Intermediate languages(IL)</strong>:</p><p>Many compilers perform translations between successive intermediate forms:</p><ul><li>All but first and last are intermediate languages internal to the compiler</li><li>Typically there is 1 IL</li></ul><p>IL’s generally ordered in descending level of abstraction</p><ul><li>Highest is source</li><li>Lowest is assembly</li></ul><p>IL’s are useful because lower levels expose features hidden by higher levels</p><ul><li>registers</li><li>memory layout</li><li>etc.</li></ul><p>But lower levels obscure high-level meaning</p><p>Issues:</p><p>Language design has big impact on compiler</p><ul><li>Determines what is easy and hard to compile</li><li>Course theme: many trade-offs in language design</li></ul><p>Today’s compiler:</p><p>The proportions have changed since FORTRAN</p><ul><li>Early: lexing, parsing most complex, expensive</li><li>Today: optimization dominates all other phases, lexing and parsing are cheap</li></ul><h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p>Slides: <a href="http://web.stanford.edu/class/cs143/lectures/lecture01.pdf" target="_blank" rel="noopener">lecture01</a></p><p>Video: <a href="https://lagunita.stanford.edu/courses/Engineering/Compilers/Fall2014/course/" target="_blank" rel="noopener">Compiler Stanford 2014</a></p>]]></content>
     
@@ -34,7 +34,7 @@
     
     </summary>
     
-      <category term="Compiler" scheme="https://blog.yilin.dev/categories/Compiler/"/>
+      <category term="学不死就往死里学" scheme="https://blog.yilin.dev/categories/%E5%AD%A6%E4%B8%8D%E6%AD%BB%E5%B0%B1%E5%BE%80%E6%AD%BB%E9%87%8C%E5%AD%A6/"/>
     
     
       <category term="Learning" scheme="https://blog.yilin.dev/tags/Learning/"/>

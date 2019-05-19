@@ -10,11 +10,11 @@
 <meta name="keywords" content="Learning,Compiler">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Learning Compiler 1">
-<meta property="og:url" content="https://blog.yilin.dev/2019/05/18/Learn complier-1/index.html">
+<meta property="og:url" content="https://blog.yilin.dev/2019/05/18/Learn-complier-1/index.html">
 <meta property="og:site_name" content="风居住的街道">
 <meta property="og:description" content="OverviewNoteStrategies:  Interpreters(slightly order) Compilers(slightly newer)  Difference between interpreters and compilers:  Interpreters run programs “as is”: little or no preprocessing Compilers">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-18T07:06:51.162Z">
+<meta property="og:updated_time" content="2019-05-19T05:11:46.483Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Learning Compiler 1">
 <meta name="twitter:description" content="OverviewNoteStrategies:  Interpreters(slightly order) Compilers(slightly newer)  Difference between interpreters and compilers:  Interpreters run programs “as is”: little or no preprocessing Compilers">
@@ -80,8 +80,10 @@
     <span id="actions">
       <ul>
         
+        <li><a class="icon" href="/2019/05/19/Learn-compiler-2/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
-        <li><a class="icon" href="/2019/05/06/First Blog/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="/2019/05/06/First-Blog/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
         <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
         <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
@@ -94,16 +96,16 @@
     <br>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://blog.yilin.dev/2019/05/18/Learn complier-1/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://blog.yilin.dev/2019/05/18/Learn complier-1/&text=Learning Compiler 1"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://blog.yilin.dev/2019/05/18/Learn complier-1/&title=Learning Compiler 1"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blog.yilin.dev/2019/05/18/Learn complier-1/&is_video=false&description=Learning Compiler 1"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=Learning Compiler 1&body=Check out this article: https://blog.yilin.dev/2019/05/18/Learn complier-1/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://blog.yilin.dev/2019/05/18/Learn complier-1/&title=Learning Compiler 1"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://blog.yilin.dev/2019/05/18/Learn complier-1/&title=Learning Compiler 1"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://blog.yilin.dev/2019/05/18/Learn complier-1/&title=Learning Compiler 1"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://blog.yilin.dev/2019/05/18/Learn complier-1/&title=Learning Compiler 1"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://blog.yilin.dev/2019/05/18/Learn complier-1/&name=Learning Compiler 1&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://blog.yilin.dev/2019/05/18/Learn-complier-1/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://blog.yilin.dev/2019/05/18/Learn-complier-1/&text=Learning Compiler 1"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://blog.yilin.dev/2019/05/18/Learn-complier-1/&title=Learning Compiler 1"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blog.yilin.dev/2019/05/18/Learn-complier-1/&is_video=false&description=Learning Compiler 1"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Learning Compiler 1&body=Check out this article: https://blog.yilin.dev/2019/05/18/Learn-complier-1/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://blog.yilin.dev/2019/05/18/Learn-complier-1/&title=Learning Compiler 1"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://blog.yilin.dev/2019/05/18/Learn-complier-1/&title=Learning Compiler 1"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://blog.yilin.dev/2019/05/18/Learn-complier-1/&title=Learning Compiler 1"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://blog.yilin.dev/2019/05/18/Learn-complier-1/&title=Learning Compiler 1"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://blog.yilin.dev/2019/05/18/Learn-complier-1/&name=Learning Compiler 1&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -134,7 +136,7 @@
       
         <time datetime="2019-05-18T04:54:01.472Z" itemprop="datePublished">2019-05-18</time>
         
-        (Updated: <time datetime="2019-05-18T07:06:51.162Z" itemprop="dateModified">2019-05-18</time>)
+        (Updated: <time datetime="2019-05-19T05:11:46.483Z" itemprop="dateModified">2019-05-19</time>)
         
       
     </div>
@@ -262,16 +264,16 @@
 
     <div id="share-footer" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://blog.yilin.dev/2019/05/18/Learn complier-1/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://blog.yilin.dev/2019/05/18/Learn complier-1/&text=Learning Compiler 1"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://blog.yilin.dev/2019/05/18/Learn complier-1/&title=Learning Compiler 1"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blog.yilin.dev/2019/05/18/Learn complier-1/&is_video=false&description=Learning Compiler 1"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=Learning Compiler 1&body=Check out this article: https://blog.yilin.dev/2019/05/18/Learn complier-1/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://blog.yilin.dev/2019/05/18/Learn complier-1/&title=Learning Compiler 1"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://blog.yilin.dev/2019/05/18/Learn complier-1/&title=Learning Compiler 1"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://blog.yilin.dev/2019/05/18/Learn complier-1/&title=Learning Compiler 1"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://blog.yilin.dev/2019/05/18/Learn complier-1/&title=Learning Compiler 1"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://blog.yilin.dev/2019/05/18/Learn complier-1/&name=Learning Compiler 1&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://blog.yilin.dev/2019/05/18/Learn-complier-1/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://blog.yilin.dev/2019/05/18/Learn-complier-1/&text=Learning Compiler 1"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://blog.yilin.dev/2019/05/18/Learn-complier-1/&title=Learning Compiler 1"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blog.yilin.dev/2019/05/18/Learn-complier-1/&is_video=false&description=Learning Compiler 1"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Learning Compiler 1&body=Check out this article: https://blog.yilin.dev/2019/05/18/Learn-complier-1/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://blog.yilin.dev/2019/05/18/Learn-complier-1/&title=Learning Compiler 1"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://blog.yilin.dev/2019/05/18/Learn-complier-1/&title=Learning Compiler 1"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://blog.yilin.dev/2019/05/18/Learn-complier-1/&title=Learning Compiler 1"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://blog.yilin.dev/2019/05/18/Learn-complier-1/&title=Learning Compiler 1"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://blog.yilin.dev/2019/05/18/Learn-complier-1/&name=Learning Compiler 1&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>

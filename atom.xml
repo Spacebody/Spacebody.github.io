@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.yilin.dev/"/>
-  <updated>2019-05-18T07:06:51.162Z</updated>
+  <updated>2019-05-19T06:10:45.414Z</updated>
   <id>https://blog.yilin.dev/</id>
   
   <author>
@@ -17,11 +17,38 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Learning Compiler 2</title>
+    <link href="https://blog.yilin.dev/2019/05/19/Learn-compiler-2/"/>
+    <id>https://blog.yilin.dev/2019/05/19/Learn-compiler-2/</id>
+    <published>2019-05-19T05:11:26.857Z</published>
+    <updated>2019-05-19T06:10:45.414Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Language-Design"><a href="#Language-Design" class="headerlink" title="Language Design"></a>Language Design</h2><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>Programming Language Economics:</p><ul><li>Languages are adopted to fill a void<ul><li>Enable a previously difficult/impossible application</li><li>Orthogonal to language design quality (almost)</li></ul></li><li>Programmer training is the dominant cost<ul><li>Languages with many users are replaced rarely</li><li>Popular languages become ossified</li><li>Buteasytostartinanewniche…</li></ul></li></ul><p>Why so many languages: Application domains have distinctive and conflicting needs</p><p>Language Evaluation Criteria</p><table><thead><tr><th style="text-align:center">Characteristic</th><th style="text-align:center">Criteria 1</th><th style="text-align:center">Criteria 2</th><th style="text-align:center">Criteria 3</th></tr></thead><tbody><tr><td style="text-align:center"></td><td style="text-align:center">Readability</td><td style="text-align:center">Writeability</td><td style="text-align:center">Reliability</td></tr><tr><td style="text-align:center">Data types</td><td style="text-align:center">*</td><td style="text-align:center">*</td><td style="text-align:center">*</td></tr><tr><td style="text-align:center">Abstraction</td><td style="text-align:center"></td><td style="text-align:center">*</td><td style="text-align:center">*</td></tr><tr><td style="text-align:center">Type checking</td><td style="text-align:center"></td><td style="text-align:center"></td><td style="text-align:center">*</td></tr><tr><td style="text-align:center">Exception handling</td><td style="text-align:center"></td><td style="text-align:center"></td><td style="text-align:center">*</td></tr></tbody></table><p>History:</p><ul><li><p>Abstraction:</p><ul><li>Detached from concrete details.</li><li>Modes of abstraction:<ul><li>Via languages/compilers: Higher-level code, few machine dependencies</li><li>Via subroutines: Abstract interface to behavior</li><li>Via modules: Export interfaces; hide implementation</li><li>Via abstract data types: Bundle data with its operations</li></ul></li></ul></li><li><p>Types:</p><ul><li>Originally, few types<ul><li>FORTRAN: scalars, arrays</li><li>LISP: no static type distinctions</li></ul></li><li>Realization: Types help<ul><li>Allow the programmer to express abstraction</li><li>Allow the compiler to check against many frequent errors</li><li>Sometimes to the point that programs are guaranteed “safe”</li></ul></li><li>More recently<ul><li>Lots of interest in types</li><li>Experiments with various forms of parameterization</li><li>Best developed in functional programming</li></ul></li></ul></li></ul><h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p>Slides: <a href="http://web.stanford.edu/class/cs143/lectures/lecture02.pdf" target="_blank" rel="noopener">lecture01</a></p><p>Video: <a href="https://lagunita.stanford.edu/courses/Engineering/Compilers/Fall2014/course/" target="_blank" rel="noopener">Compiler Stanford 2014</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;Language-Design&quot;&gt;&lt;a href=&quot;#Language-Design&quot; class=&quot;headerlink&quot; title=&quot;Language Design&quot;&gt;&lt;/a&gt;Language Design&lt;/h2&gt;&lt;h3 id=&quot;Note&quot;&gt;&lt;a href
+      
+    
+    </summary>
+    
+      <category term="学不死就往死里学" scheme="https://blog.yilin.dev/categories/%E5%AD%A6%E4%B8%8D%E6%AD%BB%E5%B0%B1%E5%BE%80%E6%AD%BB%E9%87%8C%E5%AD%A6/"/>
+    
+    
+      <category term="Learning" scheme="https://blog.yilin.dev/tags/Learning/"/>
+    
+      <category term="Compiler" scheme="https://blog.yilin.dev/tags/Compiler/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Learning Compiler 1</title>
-    <link href="https://blog.yilin.dev/2019/05/18/Learn%20complier-1/"/>
-    <id>https://blog.yilin.dev/2019/05/18/Learn complier-1/</id>
+    <link href="https://blog.yilin.dev/2019/05/18/Learn-complier-1/"/>
+    <id>https://blog.yilin.dev/2019/05/18/Learn-complier-1/</id>
     <published>2019-05-18T04:54:01.472Z</published>
-    <updated>2019-05-18T07:06:51.162Z</updated>
+    <updated>2019-05-19T05:11:46.483Z</updated>
     
     <content type="html"><![CDATA[<h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p><strong>Strategies</strong>:</p><ul><li>Interpreters(slightly order)</li><li>Compilers(slightly newer)</li></ul><p><strong>Difference</strong> between interpreters and compilers:</p><ul><li>Interpreters run programs “as is”: little or no preprocessing</li><li>Compilers do extensive preprocessing</li></ul><p><strong>Language Implementations</strong>:</p><ul><li>Low level: C/C++</li><li>Higher level: Python</li><li>Interpreter + “Just In Time”(JIT) compiler: Java</li></ul><p>History:</p><p>FORTRAN I</p><p><strong>Struture</strong> of compiler:</p><ol><li>Lexical analysis</li><li>Parsing</li><li>Semantic analysis</li><li>Optimization</li><li>Code generation</li></ol><p>Lexical analysis: First step: recognize words. Divides program text into “words” or “tokens”.</p><p>Parsing: Understand sentence structure. Parsing = Diagramming Sentences(a tree).</p><p>Semantic analysis: Understand “meaning”. Compilers perform limited analysis to catch inconsistencies, and many semantic checks besides variable bindings.</p><p>Optimization: Automatically modify programs to run faster, use less memory and in general, conserve some resource.</p><p>Code generation: Usually produces assembly code. A translation into another language.</p><p><strong>Intermediate languages(IL)</strong>:</p><p>Many compilers perform translations between successive intermediate forms:</p><ul><li>All but first and last are intermediate languages internal to the compiler</li><li>Typically there is 1 IL</li></ul><p>IL’s generally ordered in descending level of abstraction</p><ul><li>Highest is source</li><li>Lowest is assembly</li></ul><p>IL’s are useful because lower levels expose features hidden by higher levels</p><ul><li>registers</li><li>memory layout</li><li>etc.</li></ul><p>But lower levels obscure high-level meaning</p><p>Issues:</p><p>Language design has big impact on compiler</p><ul><li>Determines what is easy and hard to compile</li><li>Course theme: many trade-offs in language design</li></ul><p>Today’s compiler:</p><p>The proportions have changed since FORTRAN</p><ul><li>Early: lexing, parsing most complex, expensive</li><li>Today: optimization dominates all other phases, lexing and parsing are cheap</li></ul><h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p>Slides: <a href="http://web.stanford.edu/class/cs143/lectures/lecture01.pdf" target="_blank" rel="noopener">lecture01</a></p><p>Video: <a href="https://lagunita.stanford.edu/courses/Engineering/Compilers/Fall2014/course/" target="_blank" rel="noopener">Compiler Stanford 2014</a></p>]]></content>
     
@@ -45,10 +72,10 @@
   
   <entry>
     <title>第一条博客</title>
-    <link href="https://blog.yilin.dev/2019/05/06/First%20Blog/"/>
-    <id>https://blog.yilin.dev/2019/05/06/First Blog/</id>
+    <link href="https://blog.yilin.dev/2019/05/06/First-Blog/"/>
+    <id>https://blog.yilin.dev/2019/05/06/First-Blog/</id>
     <published>2019-05-06T13:26:07.026Z</published>
-    <updated>2019-05-06T13:39:43.576Z</updated>
+    <updated>2019-05-19T05:11:51.115Z</updated>
     
     <content type="html"><![CDATA[<p>我如果不发一条这么无聊的博客当做第一条博客，那么网站就无法生成……嗯回头我再写一篇详细介绍我的创建过程吧。晚安。</p>]]></content>
     

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head><meta name="generator" content="Hexo 3.8.0">
-    <!-- so meta -->
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- so meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="风居住的街道">
 <meta property="og:description" content="Language DesignNoteLexical AnalysisThe input is just a string of characters. The goal is to partition input string into substrings. TokensTokens correspond to sets of strings.  Identifier: strings of">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-19T07:22:21.924Z">
+<meta property="og:updated_time" content="2019-05-21T07:41:26.082Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Learning Compiler 3">
 <meta name="twitter:description" content="Language DesignNoteLexical AnalysisThe input is just a string of characters. The goal is to partition input string into substrings. TokensTokens correspond to sets of strings.  Identifier: strings of">
@@ -50,11 +50,10 @@
       <link rel="alternate" href="/atom.xml" title="风居住的街道" type="application/atom+xml">
     
 <link rel="stylesheet" href="/css/prism.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
-<body class="max-width mx-auto px3 ltr">
-    
-      <div id="header-post">
+<body class="max-width mx-auto px3 ltr">    
+      <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="header-post">
   <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
   <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
   <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
@@ -136,7 +135,7 @@
       
         <time datetime="2019-05-19T06:14:33.455Z" itemprop="datePublished">2019-05-19</time>
         
-        (Updated: <time datetime="2019-05-19T07:22:21.924Z" itemprop="dateModified">2019-05-19</time>)
+        (Updated: <time datetime="2019-05-21T07:41:26.082Z" itemprop="dateModified">2019-05-21</time>)
         
       
     </div>
@@ -209,36 +208,46 @@
 <li>Identify the token of each lexeme</li>
 </ul>
 <p>Left-to-right scan =&gt; lookahead sometimes required</p>
-<h4 id="Regular-languages"><a href="#Regular-languages" class="headerlink" title="Regular languages"></a>Regular languages</h4><p><em>Def.</em> Let $\Sigma$ be a set of characters. A language over $\Sigma$ is a set of strings of characters drawn from $\Sigma$</p>
+<h4 id="Regular-languages"><a href="#Regular-languages" class="headerlink" title="Regular languages"></a>Regular languages</h4><p><em>Def.</em> Let <span>$\Sigma$</span><!-- Has MathJax --> be a set of characters. A language over <span>$\Sigma$</span><!-- Has MathJax --> is a set of strings of characters drawn from <span>$\Sigma$</span><!-- Has MathJax -->.</p>
 <h4 id="Regular-Expressions"><a href="#Regular-Expressions" class="headerlink" title="Regular Expressions"></a>Regular Expressions</h4><h5 id="Atomic-Regular-Expressions"><a href="#Atomic-Regular-Expressions" class="headerlink" title="Atomic Regular Expressions"></a>Atomic Regular Expressions</h5><p>Single character: ‘c’ = {“c”}</p>
-<p>Epsilon: $\epsilon$ = {“”}</p>
-<h5 id="Compound-Regular-Expressions"><a href="#Compound-Regular-Expressions" class="headerlink" title="Compound Regular Expressions"></a>Compound Regular Expressions</h5><p>Union: $A+B = {s|s\in A\;\text{or}\;s\in B}$</p>
-<p>Concatenation: $AB = {ab|a\in A\;\text{and}\;b\in B}$</p>
-<p>Iteration: $A^* = \cup_{i\geq 0}A^i\;\text{where}\;A^i = A…i\;\text{times}…A$</p>
-<h4 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h4><p><em>Def.</em> The regular expressions over $\Sigma$ are the smallest set of expressions including</p>
-<p>$\epsilon$</p>
-<p>$’c’ \;\text{where}\;c \in \Sigma$</p>
-<p>$A+B \;\text{where}\; A,B \;\text{are rexp over}\;\Sigma$</p>
-<p>$AB\quad”\;\;\;”\;\;\;”$</p>
-<p>$A^* \;\text{where}\; A \;\text{is a rexp over}\;\Sigma$</p>
-<h4 id="Syntax-vs-Semantics"><a href="#Syntax-vs-Semantics" class="headerlink" title="Syntax vs. Semantics"></a>Syntax vs. Semantics</h4><p>$L(\epsilon) = {“”}$</p>
-<p>$L(‘c’) = {“c”}$</p>
-<p>$L(A+B) = L(A) + L(B)$</p>
-<p>$L(AB)={ab|a\in L(A)\;\text{and}\;b\in L(B)}$</p>
-<p>$L(A^*)= \cup_{i\geq 0}L(A^i)$</p>
+<p>Epsilon: <span>$\epsilon$</span><!-- Has MathJax --> = {“”}</p>
+<h5 id="Compound-Regular-Expressions"><a href="#Compound-Regular-Expressions" class="headerlink" title="Compound Regular Expressions"></a>Compound Regular Expressions</h5><p>Union: <span>$A+B = \{s|s\in A\;\text{or}\;s\in B\}$</span><!-- Has MathJax --></p>
+<p>Concatenation: <span>$AB = \{ab|a\in A\;\text{and}\;b\in B\}$</span><!-- Has MathJax --></p>
+<p>Iteration: <span>$A^* = \cup_{i\geq 0}A^i\;\text{where}\;A^i = A...i\;\text{times}...A$</span><!-- Has MathJax --></p>
+<h4 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h4><p><em>Def.</em> The regular expressions over <span>$\Sigma$</span><!-- Has MathJax --> are the smallest set of expressions including</p>
+<span>$\epsilon$</span><!-- Has MathJax -->,
+
+<span>$&apos;c&apos; \;\text{where}\;c \in \Sigma$</span><!-- Has MathJax -->,
+
+<span>$A+B \;\text{where}\; A,B \;\text{are rexp over}\;\Sigma$</span><!-- Has MathJax -->,
+
+<span>$AB\quad&quot;\;\;\;&quot;\;\;\;&quot;$</span><!-- Has MathJax -->,
+
+<span>$A^* \;\text{where}\; A \;\text{is a rexp over}\;\Sigma$</span><!-- Has MathJax -->.
+
+<h4 id="Syntax-vs-Semantics"><a href="#Syntax-vs-Semantics" class="headerlink" title="Syntax vs. Semantics"></a>Syntax vs. Semantics</h4><span>$L(\epsilon) = \{&quot;&quot;\}$</span><!-- Has MathJax -->
+
+<span>$L(&apos;c&apos;) = \{&quot;c&quot;\}$</span><!-- Has MathJax -->
+
+<span>$L(A+B) = L(A) + L(B)$</span><!-- Has MathJax -->
+
+<span>$L(AB)=\{ab|a\in L(A)\;\text{and}\;b\in L(B)\}$</span><!-- Has MathJax -->
+
+<span>$L(A^*)= \cup_{i\geq 0}L(A^i)$</span><!-- Has MathJax -->
+
 <h4 id="Segue"><a href="#Segue" class="headerlink" title="Segue"></a>Segue</h4><p>Keywords: e.g. ‘if’ abbreviates ‘i’’f’</p>
-<p>Integers: Abbreviation: $A^+ = AA^*$</p>
+<p>Integers: Abbreviation: <span>$A^+ = AA^*$</span><!-- Has MathJax --></p>
 <ul>
 <li>a non-empty string of digits</li>
-<li>digit = ‘0’+’1’+’2’+’3’+’4’+’5’+’6’+’7’+’8’+’9’ </li>
-<li>integer = digit digit*</li>
+<li>digit = ‘0’+’1’+’2’+’3’+’4’+’5’+’6’+’7’+’8’+’9’</li>
+<li>integer = digit digit<span>$^*$</span><!-- Has MathJax --></li>
 </ul>
-<p>Identifier: Abbrevation: letter (letter + digit)$^*$</p>
+<p>Identifier: Abbrevation: letter (letter + digit)<span>$^*$</span><!-- Has MathJax --></p>
 <ul>
 <li>strings of letters or digits, starting with a letter</li>
 <li>letter = ‘A’+…+’Z’+’a’+…+ ‘z’</li>
 </ul>
-<p>Whitespace: Abbrevation: $(‘ ‘ + ‘\n’ + ‘\t’)^+$</p>
+<p>Whitespace: Abbrevation: <span>$(&apos; &apos; + &apos;\n&apos; + &apos;\t&apos;)^+$</span><!-- Has MathJax --></p>
 <ul>
 <li>a non-empty sequence of blanks, newlines, and tabs</li>
 </ul>
@@ -373,5 +382,37 @@
     </script>
 
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 </body>
 </html>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head><meta name="generator" content="Hexo 3.8.0">
-    <!-- so meta -->
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- so meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="风居住的街道">
 <meta property="og:description" content="Language DesignNoteProgramming Language EconomicsLanguages are adopted to fill a void  Enable a previously difficult/impossible application Orthogonal to language design quality (almost)  Programmer t">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-19T06:53:44.132Z">
+<meta property="og:updated_time" content="2019-05-21T07:27:41.955Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Learning Compiler 2">
 <meta name="twitter:description" content="Language DesignNoteProgramming Language EconomicsLanguages are adopted to fill a void  Enable a previously difficult/impossible application Orthogonal to language design quality (almost)  Programmer t">
@@ -50,11 +50,10 @@
       <link rel="alternate" href="/atom.xml" title="风居住的街道" type="application/atom+xml">
     
 <link rel="stylesheet" href="/css/prism.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
-<body class="max-width mx-auto px3 ltr">
-    
-      <div id="header-post">
+<body class="max-width mx-auto px3 ltr">    
+      <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="header-post">
   <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
   <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
   <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
@@ -136,7 +135,7 @@
       
         <time datetime="2019-05-19T05:11:26.857Z" itemprop="datePublished">2019-05-19</time>
         
-        (Updated: <time datetime="2019-05-19T06:53:44.132Z" itemprop="dateModified">2019-05-19</time>)
+        (Updated: <time datetime="2019-05-21T07:27:41.955Z" itemprop="dateModified">2019-05-21</time>)
         
       
     </div>
@@ -176,45 +175,43 @@
 <h4 id="Language-Evaluation-Criteria"><a href="#Language-Evaluation-Criteria" class="headerlink" title="Language Evaluation Criteria"></a>Language Evaluation Criteria</h4><table>
 <thead>
 <tr>
-<th style="text-align:center">Characteristic</th>
-<th style="text-align:center">Criteria 1</th>
-<th style="text-align:center">Criteria 2</th>
-<th style="text-align:center">Criteria 3</th>
+<th align="center">Characteristic</th>
+<th align="center">Criteria 1</th>
+<th align="center">Criteria 2</th>
+<th align="center">Criteria 3</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center"></td>
-<td style="text-align:center">Readability</td>
-<td style="text-align:center">Writeability</td>
-<td style="text-align:center">Reliability</td>
+<tbody><tr>
+<td align="center"></td>
+<td align="center">Readability</td>
+<td align="center">Writeability</td>
+<td align="center">Reliability</td>
 </tr>
 <tr>
-<td style="text-align:center">Data types</td>
-<td style="text-align:center">*</td>
-<td style="text-align:center">*</td>
-<td style="text-align:center">*</td>
+<td align="center">Data types</td>
+<td align="center">*</td>
+<td align="center">*</td>
+<td align="center">*</td>
 </tr>
 <tr>
-<td style="text-align:center">Abstraction</td>
-<td style="text-align:center"></td>
-<td style="text-align:center">*</td>
-<td style="text-align:center">*</td>
+<td align="center">Abstraction</td>
+<td align="center"></td>
+<td align="center">*</td>
+<td align="center">*</td>
 </tr>
 <tr>
-<td style="text-align:center">Type checking</td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center">*</td>
+<td align="center">Type checking</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">*</td>
 </tr>
 <tr>
-<td style="text-align:center">Exception handling</td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center">*</td>
+<td align="center">Exception handling</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">*</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <h4 id="History"><a href="#History" class="headerlink" title="History"></a>History</h4><p><strong>Abstraction</strong>:</p>
 <ul>
 <li>Detached from concrete details</li>
@@ -377,5 +374,37 @@
     </script>
 
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 </body>
 </html>

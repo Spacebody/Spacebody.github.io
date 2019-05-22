@@ -9,7 +9,7 @@
     <meta name="description" content="Finite AutomataNoteSpecifying Lexical Structure Using Regular ExpressionsUnion: $A|B\equiv A + B$Option: $A + \epsilon \equiv A?$Range: $&amp;apos;a&amp;apos;+&amp;apos;b&amp;apos;+\dots+&amp;apos;z&amp;apos;\equiv [a-z]$Exc">
 <meta name="keywords" content="Learning,Compiler">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Learning Compiler 4">
+<meta property="og:title" content="Learning Compiler 4 Finite Automata">
 <meta property="og:url" content="https://blog.yilin.dev/2019/05/21/Learn-compiler-4/index.html">
 <meta property="og:site_name" content="风居住的街道">
 <meta property="og:description" content="Finite AutomataNoteSpecifying Lexical Structure Using Regular ExpressionsUnion: $A|B\equiv A + B$Option: $A + \epsilon \equiv A?$Range: $&amp;apos;a&amp;apos;+&amp;apos;b&amp;apos;+\dots+&amp;apos;z&amp;apos;\equiv [a-z]$Exc">
@@ -20,9 +20,9 @@
 <meta property="og:image" content="https://blog.yilin.dev/2019/05/21/figures/rexp2nfa2.png">
 <meta property="og:image" content="https://blog.yilin.dev/2019/05/21/figures/rexp2nfa3.png">
 <meta property="og:image" content="https://blog.yilin.dev/2019/05/21/figures/nfa2dfa_example.png">
-<meta property="og:updated_time" content="2019-05-22T11:21:17.732Z">
+<meta property="og:updated_time" content="2019-05-22T11:23:23.497Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Learning Compiler 4">
+<meta name="twitter:title" content="Learning Compiler 4 Finite Automata">
 <meta name="twitter:description" content="Finite AutomataNoteSpecifying Lexical Structure Using Regular ExpressionsUnion: $A|B\equiv A + B$Option: $A + \epsilon \equiv A?$Range: $&amp;apos;a&amp;apos;+&amp;apos;b&amp;apos;+\dots+&amp;apos;z&amp;apos;\equiv [a-z]$Exc">
 <meta name="twitter:image" content="https://blog.yilin.dev/2019/05/21/figures/FASG.png">
     
@@ -44,7 +44,7 @@
         
     
     <!-- title -->
-    <title>Learning Compiler 4</title>
+    <title>Learning Compiler 4 Finite Automata</title>
     <!-- styles -->
     <link rel="stylesheet" href="/css/style.css">
     <!-- persian styles -->
@@ -101,15 +101,15 @@
     <div id="share" style="display: none">
       <ul>
   <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://blog.yilin.dev/2019/05/21/Learn-compiler-4/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://blog.yilin.dev/2019/05/21/Learn-compiler-4/&text=Learning Compiler 4"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://blog.yilin.dev/2019/05/21/Learn-compiler-4/&title=Learning Compiler 4"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blog.yilin.dev/2019/05/21/Learn-compiler-4/&is_video=false&description=Learning Compiler 4"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=Learning Compiler 4&body=Check out this article: https://blog.yilin.dev/2019/05/21/Learn-compiler-4/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://blog.yilin.dev/2019/05/21/Learn-compiler-4/&title=Learning Compiler 4"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://blog.yilin.dev/2019/05/21/Learn-compiler-4/&title=Learning Compiler 4"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://blog.yilin.dev/2019/05/21/Learn-compiler-4/&title=Learning Compiler 4"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://blog.yilin.dev/2019/05/21/Learn-compiler-4/&title=Learning Compiler 4"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://blog.yilin.dev/2019/05/21/Learn-compiler-4/&name=Learning Compiler 4&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://blog.yilin.dev/2019/05/21/Learn-compiler-4/&text=Learning Compiler 4 Finite Automata"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://blog.yilin.dev/2019/05/21/Learn-compiler-4/&title=Learning Compiler 4 Finite Automata"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blog.yilin.dev/2019/05/21/Learn-compiler-4/&is_video=false&description=Learning Compiler 4 Finite Automata"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Learning Compiler 4 Finite Automata&body=Check out this article: https://blog.yilin.dev/2019/05/21/Learn-compiler-4/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://blog.yilin.dev/2019/05/21/Learn-compiler-4/&title=Learning Compiler 4 Finite Automata"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://blog.yilin.dev/2019/05/21/Learn-compiler-4/&title=Learning Compiler 4 Finite Automata"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://blog.yilin.dev/2019/05/21/Learn-compiler-4/&title=Learning Compiler 4 Finite Automata"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://blog.yilin.dev/2019/05/21/Learn-compiler-4/&title=Learning Compiler 4 Finite Automata"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://blog.yilin.dev/2019/05/21/Learn-compiler-4/&name=Learning Compiler 4 Finite Automata&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -126,7 +126,7 @@
   <header>
     
     <h1 class="posttitle" itemprop="name headline">
-        Learning Compiler 4
+        Learning Compiler 4 Finite Automata
     </h1>
 
 
@@ -140,7 +140,7 @@
       
         <time datetime="2019-05-21T05:26:17.236Z" itemprop="datePublished">2019-05-21</time>
         
-        (Updated: <time datetime="2019-05-22T11:21:17.732Z" itemprop="dateModified">2019-05-22</time>)
+        (Updated: <time datetime="2019-05-22T11:23:23.497Z" itemprop="dateModified">2019-05-22</time>)
         
       
     </div>
@@ -319,15 +319,15 @@
     <div id="share-footer" style="display: none">
       <ul>
   <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://blog.yilin.dev/2019/05/21/Learn-compiler-4/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://blog.yilin.dev/2019/05/21/Learn-compiler-4/&text=Learning Compiler 4"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://blog.yilin.dev/2019/05/21/Learn-compiler-4/&title=Learning Compiler 4"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blog.yilin.dev/2019/05/21/Learn-compiler-4/&is_video=false&description=Learning Compiler 4"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=Learning Compiler 4&body=Check out this article: https://blog.yilin.dev/2019/05/21/Learn-compiler-4/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://blog.yilin.dev/2019/05/21/Learn-compiler-4/&title=Learning Compiler 4"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://blog.yilin.dev/2019/05/21/Learn-compiler-4/&title=Learning Compiler 4"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://blog.yilin.dev/2019/05/21/Learn-compiler-4/&title=Learning Compiler 4"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://blog.yilin.dev/2019/05/21/Learn-compiler-4/&title=Learning Compiler 4"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://blog.yilin.dev/2019/05/21/Learn-compiler-4/&name=Learning Compiler 4&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://blog.yilin.dev/2019/05/21/Learn-compiler-4/&text=Learning Compiler 4 Finite Automata"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://blog.yilin.dev/2019/05/21/Learn-compiler-4/&title=Learning Compiler 4 Finite Automata"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blog.yilin.dev/2019/05/21/Learn-compiler-4/&is_video=false&description=Learning Compiler 4 Finite Automata"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Learning Compiler 4 Finite Automata&body=Check out this article: https://blog.yilin.dev/2019/05/21/Learn-compiler-4/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://blog.yilin.dev/2019/05/21/Learn-compiler-4/&title=Learning Compiler 4 Finite Automata"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://blog.yilin.dev/2019/05/21/Learn-compiler-4/&title=Learning Compiler 4 Finite Automata"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://blog.yilin.dev/2019/05/21/Learn-compiler-4/&title=Learning Compiler 4 Finite Automata"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://blog.yilin.dev/2019/05/21/Learn-compiler-4/&title=Learning Compiler 4 Finite Automata"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://blog.yilin.dev/2019/05/21/Learn-compiler-4/&name=Learning Compiler 4 Finite Automata&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>

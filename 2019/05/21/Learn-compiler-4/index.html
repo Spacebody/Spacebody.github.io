@@ -14,17 +14,17 @@
 <meta property="og:site_name" content="风居住的街道">
 <meta property="og:description" content="Finite AutomataNoteSpecifying Lexical Structure Using Regular ExpressionsUnion: $A|B\equiv A + B$Option: $A + \epsilon \equiv A?$Range: $&amp;apos;a&amp;apos;+&amp;apos;b&amp;apos;+\dots+&amp;apos;z&amp;apos;\equiv [a-z]$Exc">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://blog.yilin.dev/2019/05/21/Learn-compiler-4/figures/FASG.png">
-<meta property="og:image" content="https://blog.yilin.dev/2019/05/21/Learn-compiler-4/figures/epsilon-move.png">
-<meta property="og:image" content="https://blog.yilin.dev/2019/05/21/Learn-compiler-4/figures/rexp2nfa1.png">
-<meta property="og:image" content="https://blog.yilin.dev/2019/05/21/Learn-compiler-4/figures/rexp2nfa2.png">
-<meta property="og:image" content="https://blog.yilin.dev/2019/05/21/Learn-compiler-4/figures/rexp2nfa3.png">
-<meta property="og:image" content="https://blog.yilin.dev/2019/05/21/Learn-compiler-4/figures/nfa2dfa_example.png">
-<meta property="og:updated_time" content="2019-05-22T11:30:40.922Z">
+<meta property="og:image" content="https://blog.yilin.dev/figures/FASG.png">
+<meta property="og:image" content="https://blog.yilin.dev/figures/epsilon-move.png">
+<meta property="og:image" content="https://blog.yilin.dev/figures/rexp2nfa1.png">
+<meta property="og:image" content="https://blog.yilin.dev/figures/rexp2nfa2.png">
+<meta property="og:image" content="https://blog.yilin.dev/figures/rexp2nfa3.png">
+<meta property="og:image" content="https://blog.yilin.dev/figures/nfa2dfa_example.png">
+<meta property="og:updated_time" content="2019-05-22T11:48:39.979Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Learning Compiler 4 Finite Automata">
 <meta name="twitter:description" content="Finite AutomataNoteSpecifying Lexical Structure Using Regular ExpressionsUnion: $A|B\equiv A + B$Option: $A + \epsilon \equiv A?$Range: $&amp;apos;a&amp;apos;+&amp;apos;b&amp;apos;+\dots+&amp;apos;z&amp;apos;\equiv [a-z]$Exc">
-<meta name="twitter:image" content="https://blog.yilin.dev/2019/05/21/Learn-compiler-4/figures/FASG.png">
+<meta name="twitter:image" content="https://blog.yilin.dev/figures/FASG.png">
     
     
         
@@ -140,7 +140,7 @@
       
         <time datetime="2019-05-21T05:26:17.236Z" itemprop="datePublished">2019-05-21</time>
         
-        (Updated: <time datetime="2019-05-22T11:30:40.922Z" itemprop="dateModified">2019-05-22</time>)
+        (Updated: <time datetime="2019-05-22T11:48:39.979Z" itemprop="dateModified">2019-05-22</time>)
         
       
     </div>
@@ -165,11 +165,11 @@
   
 
   <div class="content" itemprop="articleBody">
-    <h2 id="Finite-Automata"><a href="#Finite-Automata" class="headerlink" title="Finite Automata"></a>Finite Automata</h2><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><h4 id="Specifying-Lexical-Structure-Using-Regular-Expressions"><a href="#Specifying-Lexical-Structure-Using-Regular-Expressions" class="headerlink" title="Specifying Lexical Structure Using Regular Expressions"></a>Specifying Lexical Structure Using Regular Expressions</h4><p>Union: <span>$A|B\equiv A + B$</span><!-- Has MathJax --><br>Option: <span>$A + \epsilon \equiv A?$</span><!-- Has MathJax --><br>Range: <span>$&apos;a&apos;+&apos;b&apos;+\dots+&apos;z&apos;\equiv [a-z]$</span><!-- Has MathJax --><br>Excluded range: complement of <span>$[a-z] \equiv [\^a-z]$</span><!-- Has MathJax --></p>
+    <h2 id="Finite-Automata"><a href="#Finite-Automata" class="headerlink" title="Finite Automata"></a>Finite Automata</h2><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><h4 id="Specifying-Lexical-Structure-Using-Regular-Expressions"><a href="#Specifying-Lexical-Structure-Using-Regular-Expressions" class="headerlink" title="Specifying Lexical Structure Using Regular Expressions"></a>Specifying Lexical Structure Using Regular Expressions</h4><p>Union: <span>$A|B\equiv A + B$</span><!-- Has MathJax --><br>Option: <span>$A + \epsilon \equiv A?$</span><!-- Has MathJax --><br>Range: <span>$&apos;a&apos;+&apos;b&apos;+\dots+&apos;z&apos;\equiv [a-z]$</span><!-- Has MathJax --><br>Excluded range: complement of <span>$[a-z] \equiv [\hat{}a-z]$</span><!-- Has MathJax --></p>
 <h4 id="Regular-Expressions-gt-Lexical-Spec"><a href="#Regular-Expressions-gt-Lexical-Spec" class="headerlink" title="Regular Expressions =&gt; Lexical Spec."></a>Regular Expressions =&gt; Lexical Spec.</h4><ol>
 <li>Write a rexp for the lexemes of each token</li>
 <li>Construct <span>$R$</span><!-- Has MathJax -->, matching all lexemes for all tokens<ul>
-<li><span>$R = Keyword + Identifier + Number + \dots \\ = R_1 + R_2 + \dots$</span><!-- Has MathJax --></li>
+<li><span>$R = \text{Keyword} + \text{Identifier} + \text{Number} + \dots \\ = R_1 + R_2 + \dots$</span><!-- Has MathJax --></li>
 </ul>
 </li>
 <li>Let input be <span>$x_1\dots x_n$</span><!-- Has MathJax --><ul>
@@ -200,7 +200,7 @@
 </ul>
 <h4 id="Finite-Automata-1"><a href="#Finite-Automata-1" class="headerlink" title="Finite Automata"></a>Finite Automata</h4><p>Regular expressions = specification</p>
 <p>Finite automata = implementation</p>
-<p>A finite automaton consists of –  An input alphabet <span>$\Epsilon$</span><!-- Has MathJax --></p>
+<p>A finite automaton consists of –  An input alphabet <span>$\Sigma$</span><!-- Has MathJax --></p>
 <ul>
 <li>A set of states <span>$S$</span><!-- Has MathJax --></li>
 <li>A start state <span>$n$</span><!-- Has MathJax --></li>
@@ -211,10 +211,9 @@
 <p>Is read: In state <span>$s_1$</span><!-- Has MathJax --> on input “a” go to state <span>$s_2$</span><!-- Has MathJax --></p>
 <p>If end of input and in accepting state =&gt; accept</p>
 <p>Otherwise =&gt; reject</p>
-<h4 id="Finite-Automata-State-Graphs"><a href="#Finite-Automata-State-Graphs" class="headerlink" title="Finite Automata State Graphs"></a>Finite Automata State Graphs</h4><p><img src="./figures/FASG.png" alt="Finite Automata State Graphs"></p>
-<h4 id="Epsilon-Moves"><a href="#Epsilon-Moves" class="headerlink" title="Epsilon Moves"></a>Epsilon Moves</h4><span>$\epsilon$</span><!-- Has MathJax -->-moves
-
-<p><img src="./figures/epsilon-move.png" alt="Epsilon Moves"></p>
+<h4 id="Finite-Automata-State-Graphs"><a href="#Finite-Automata-State-Graphs" class="headerlink" title="Finite Automata State Graphs"></a>Finite Automata State Graphs</h4><p><img src="/figures/FASG.png" alt="Finite Automata State Graphs"></p>
+<h4 id="Epsilon-Moves"><a href="#Epsilon-Moves" class="headerlink" title="Epsilon Moves"></a>Epsilon Moves</h4><p>$\epsilon$-moves</p>
+<p><img src="/figures/epsilon-move.png" alt="Epsilon Moves"></p>
 <p>Machine can move from state A to state B without reading input</p>
 <h4 id="Deterministic-and-Nondeterministic-Automata"><a href="#Deterministic-and-Nondeterministic-Automata" class="headerlink" title="Deterministic and Nondeterministic Automata"></a>Deterministic and Nondeterministic Automata</h4><p>Deterministic Finite Automata (DFA)</p>
 <ul>
@@ -246,9 +245,9 @@
 <p>DFA can be exponentially larger than NFA</p>
 <h4 id="Regular-Expressions-to-Finite-Automata"><a href="#Regular-Expressions-to-Finite-Automata" class="headerlink" title="Regular Expressions to Finite Automata"></a>Regular Expressions to Finite Automata</h4><p>High-level sketch:</p>
 <p>Lexical Specification -&gt; Regular Expressions -&gt; NFA -&gt; DFA -&gt; Table-driven Implementation of DFA</p>
-<h4 id="Regular-Expressions-to-NFA"><a href="#Regular-Expressions-to-NFA" class="headerlink" title="Regular Expressions to NFA"></a>Regular Expressions to NFA</h4><p><img src="./figures/rexp2nfa1.png" alt="Regular Expressions to NFA 1"></p>
-<p><img src="./figures/rexp2nfa2.png" alt="Regular Expressions to NFA 1"></p>
-<p><img src="./figures/rexp2nfa3.png" alt="Regular Expressions to NFA 1"></p>
+<h4 id="Regular-Expressions-to-NFA"><a href="#Regular-Expressions-to-NFA" class="headerlink" title="Regular Expressions to NFA"></a>Regular Expressions to NFA</h4><p><img src="/figures/rexp2nfa1.png" alt="Regular Expressions to NFA 1"></p>
+<p><img src="/figures/rexp2nfa2.png" alt="Regular Expressions to NFA 1"></p>
+<p><img src="/figures/rexp2nfa3.png" alt="Regular Expressions to NFA 1"></p>
 <h4 id="NFA-to-DFA-The-Trick"><a href="#NFA-to-DFA-The-Trick" class="headerlink" title="NFA to DFA: The Trick"></a>NFA to DFA: The Trick</h4><p>Simulate the NFA</p>
 <p>Each state of DFA = a non-empty subset of states of the NFA</p>
 <p>Start state = the set of NFA states reachable through <span>$\epsilon$</span><!-- Has MathJax -->-moves from NFA start state</p>
@@ -261,7 +260,7 @@
 
 </li>
 </ul>
-<h4 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h4><p><img src="./figures/nfa2dfa_example.png" alt="NFA to DFA Example"></p>
+<h4 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h4><p><img src="/figures/nfa2dfa_example.png" alt="NFA to DFA Example"></p>
 <h4 id="Implementation"><a href="#Implementation" class="headerlink" title="Implementation"></a>Implementation</h4><p>A DFA can be implemented by a 2D table T</p>
 <ul>
 <li>One dimension is “states”</li>

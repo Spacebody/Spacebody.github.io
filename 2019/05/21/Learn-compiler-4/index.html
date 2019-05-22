@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Finite AutomataNoteSpecifying Lexical Structure Using Regular ExpressionsUnion: $A|B\equiv A + B$Option: $A + \epsilon \equiv A?$Range: $&amp;apos;a&amp;apos;+&amp;apos;b&amp;apos;+\dots+&amp;apos;z&amp;apos;\equiv [a-z]$Exc">
+<meta name="keywords" content="Learning,Compiler">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Learning Compiler 4">
+<meta property="og:url" content="https://blog.yilin.dev/2019/05/21/Learn-compiler-4/index.html">
+<meta property="og:site_name" content="风居住的街道">
+<meta property="og:description" content="Finite AutomataNoteSpecifying Lexical Structure Using Regular ExpressionsUnion: $A|B\equiv A + B$Option: $A + \epsilon \equiv A?$Range: $&amp;apos;a&amp;apos;+&amp;apos;b&amp;apos;+\dots+&amp;apos;z&amp;apos;\equiv [a-z]$Exc">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://blog.yilin.dev/2019/05/21/figures/FASG.png">
+<meta property="og:image" content="https://blog.yilin.dev/2019/05/21/figures/epsilon-move.png">
+<meta property="og:image" content="https://blog.yilin.dev/2019/05/21/figures/rexp2nfa1.png">
+<meta property="og:image" content="https://blog.yilin.dev/2019/05/21/figures/rexp2nfa2.png">
+<meta property="og:image" content="https://blog.yilin.dev/2019/05/21/figures/rexp2nfa3.png">
+<meta property="og:image" content="https://blog.yilin.dev/2019/05/21/figures/nfa2dfa_example.png">
+<meta property="og:updated_time" content="2019-05-22T11:21:17.732Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Learning Compiler 4">
+<meta name="twitter:description" content="Finite AutomataNoteSpecifying Lexical Structure Using Regular ExpressionsUnion: $A|B\equiv A + B$Option: $A + \epsilon \equiv A?$Range: $&amp;apos;a&amp;apos;+&amp;apos;b&amp;apos;+\dots+&amp;apos;z&amp;apos;\equiv [a-z]$Exc">
+<meta name="twitter:image" content="https://blog.yilin.dev/2019/05/21/figures/FASG.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Learning Compiler 4</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+      <link rel="alternate" href="/atom.xml" title="风居住的街道" type="application/atom+xml">
+    
+<link rel="stylesheet" href="/css/prism.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+
+<body class="max-width mx-auto px3 ltr">    
+      <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/tags/">Tag</a></li>
+         
+          <li><a href="/categories/">Category</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/2019/05/19/Learn-economics-1/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://blog.yilin.dev/2019/05/21/Learn-compiler-4/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://blog.yilin.dev/2019/05/21/Learn-compiler-4/&text=Learning Compiler 4"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://blog.yilin.dev/2019/05/21/Learn-compiler-4/&title=Learning Compiler 4"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blog.yilin.dev/2019/05/21/Learn-compiler-4/&is_video=false&description=Learning Compiler 4"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Learning Compiler 4&body=Check out this article: https://blog.yilin.dev/2019/05/21/Learn-compiler-4/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://blog.yilin.dev/2019/05/21/Learn-compiler-4/&title=Learning Compiler 4"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://blog.yilin.dev/2019/05/21/Learn-compiler-4/&title=Learning Compiler 4"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://blog.yilin.dev/2019/05/21/Learn-compiler-4/&title=Learning Compiler 4"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://blog.yilin.dev/2019/05/21/Learn-compiler-4/&title=Learning Compiler 4"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://blog.yilin.dev/2019/05/21/Learn-compiler-4/&name=Learning Compiler 4&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Finite-Automata"><span class="toc-number">1.</span> <span class="toc-text">Finite Automata</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Note"><span class="toc-number">1.1.</span> <span class="toc-text">Note</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Specifying-Lexical-Structure-Using-Regular-Expressions"><span class="toc-number">1.1.1.</span> <span class="toc-text">Specifying Lexical Structure Using Regular Expressions</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Regular-Expressions-gt-Lexical-Spec"><span class="toc-number">1.1.2.</span> <span class="toc-text">Regular Expressions =&gt; Lexical Spec.</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Ambiguities"><span class="toc-number">1.1.3.</span> <span class="toc-text">Ambiguities</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Error-handling"><span class="toc-number">1.1.4.</span> <span class="toc-text">Error handling</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Summary"><span class="toc-number">1.1.5.</span> <span class="toc-text">Summary</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Finite-Automata-1"><span class="toc-number">1.1.6.</span> <span class="toc-text">Finite Automata</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Finite-Automata-State-Graphs"><span class="toc-number">1.1.7.</span> <span class="toc-text">Finite Automata State Graphs</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Epsilon-Moves"><span class="toc-number">1.1.8.</span> <span class="toc-text">Epsilon Moves</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Deterministic-and-Nondeterministic-Automata"><span class="toc-number">1.1.9.</span> <span class="toc-text">Deterministic and Nondeterministic Automata</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Execution-of-Finite-Automata"><span class="toc-number">1.1.10.</span> <span class="toc-text">Execution of Finite Automata</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Acceptance-of-NFAs"><span class="toc-number">1.1.11.</span> <span class="toc-text">Acceptance of NFAs</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#NFA-vs-DFA"><span class="toc-number">1.1.12.</span> <span class="toc-text">NFA vs. DFA</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Regular-Expressions-to-Finite-Automata"><span class="toc-number">1.1.13.</span> <span class="toc-text">Regular Expressions to Finite Automata</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Regular-Expressions-to-NFA"><span class="toc-number">1.1.14.</span> <span class="toc-text">Regular Expressions to NFA</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#NFA-to-DFA-The-Trick"><span class="toc-number">1.1.15.</span> <span class="toc-text">NFA to DFA: The Trick</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#NFA-to-DFA-Remark"><span class="toc-number">1.1.16.</span> <span class="toc-text">NFA to DFA. Remark</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Example"><span class="toc-number">1.1.17.</span> <span class="toc-text">Example</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Implementation"><span class="toc-number">1.1.18.</span> <span class="toc-text">Implementation</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Reference"><span class="toc-number">1.2.</span> <span class="toc-text">Reference</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Learning Compiler 4
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">风居住的街道</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2019-05-21T05:26:17.236Z" itemprop="datePublished">2019-05-21</time>
+        
+        (Updated: <time datetime="2019-05-22T11:21:17.732Z" itemprop="dateModified">2019-05-22</time>)
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/学不死就往死里学/">学不死就往死里学</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/Compiler/">Compiler</a>, <a class="tag-link" href="/tags/Learning/">Learning</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="Finite-Automata"><a href="#Finite-Automata" class="headerlink" title="Finite Automata"></a>Finite Automata</h2><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><h4 id="Specifying-Lexical-Structure-Using-Regular-Expressions"><a href="#Specifying-Lexical-Structure-Using-Regular-Expressions" class="headerlink" title="Specifying Lexical Structure Using Regular Expressions"></a>Specifying Lexical Structure Using Regular Expressions</h4><p>Union: <span>$A|B\equiv A + B$</span><!-- Has MathJax --><br>Option: <span>$A + \epsilon \equiv A?$</span><!-- Has MathJax --><br>Range: <span>$&apos;a&apos;+&apos;b&apos;+\dots+&apos;z&apos;\equiv [a-z]$</span><!-- Has MathJax --><br>Excluded range: complement of <span>$[a-z] \equiv [^a-z]$</span><!-- Has MathJax --></p>
+<h4 id="Regular-Expressions-gt-Lexical-Spec"><a href="#Regular-Expressions-gt-Lexical-Spec" class="headerlink" title="Regular Expressions =&gt; Lexical Spec."></a>Regular Expressions =&gt; Lexical Spec.</h4><ol>
+<li>Write a rexp for the lexemes of each token</li>
+<li>Construct <span>$R$</span><!-- Has MathJax -->, matching all lexemes for all tokens<ul>
+<li><span>$R = Keyword + Identifier + Number + \dots \\ = R_1 + R_2 + \dots$</span><!-- Has MathJax --></li>
+</ul>
+</li>
+<li>Let input be <span>$x_1\dotsx_n$</span><!-- Has MathJax --><ul>
+<li>For <span>$1 \leq i \leq n$</span><!-- Has MathJax --> check <span>$x_1\dots x_i\in L(R)$</span><!-- Has MathJax --></li>
+</ul>
+</li>
+<li>If success, then we know that <span>$x_1\dots x_i\in L(R_j)$</span><!-- Has MathJax --> for some <span>$j$</span><!-- Has MathJax --></li>
+<li>Remove <span>$x_1\dots x_i$</span><!-- Has MathJax --> from input and go to (3)</li>
+</ol>
+<h4 id="Ambiguities"><a href="#Ambiguities" class="headerlink" title="Ambiguities"></a>Ambiguities</h4><p>Rule: Pick longest possible string in <span>$L(R)$</span><!-- Has MathJax --></p>
+<p>Rule: Use rule listed first</p>
+<h4 id="Error-handling"><a href="#Error-handling" class="headerlink" title="Error handling"></a>Error handling</h4><p>No rule matches a prefix of input</p>
+<p>Solution:</p>
+<ul>
+<li>Write a rule matching all “bad” strings</li>
+<li>Put it last (lowest priority)</li>
+</ul>
+<h4 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h4><p>Regular expressions provide a concise notation for string patterns</p>
+<p>Use in lexical analysis requires small extensions</p>
+<ul>
+<li>To resolve ambiguities</li>
+<li>To handle errors</li>
+</ul>
+<p>Good algorithms known</p>
+<ul>
+<li>Require only single pass over the input</li>
+<li>Few operations per character (table lookup)</li>
+</ul>
+<h4 id="Finite-Automata-1"><a href="#Finite-Automata-1" class="headerlink" title="Finite Automata"></a>Finite Automata</h4><p>Regular expressions = specification</p>
+<p>Finite automata = implementation</p>
+<p>A finite automaton consists of –  An input alphabet <span>$\Epsilon$</span><!-- Has MathJax --></p>
+<ul>
+<li>A set of states <span>$S$</span><!-- Has MathJax --></li>
+<li>A start state <span>$n$</span><!-- Has MathJax --></li>
+<li>A set of accepting states <span>$F\subseteq S$</span><!-- Has MathJax --></li>
+<li>A set of transitions state <span>$\rightarrow^{\text{input}}$</span><!-- Has MathJax --> state</li>
+</ul>
+<p>Transition: <span>$s_1 \rightarrow^{a} s_2$</span><!-- Has MathJax --></p>
+<p>Is read: In state <span>$s_1$</span><!-- Has MathJax --> on input “a” go to state <span>$s_2$</span><!-- Has MathJax --></p>
+<p>If end of input and in accepting state =&gt; accept</p>
+<p>Otherwise =&gt; reject</p>
+<h4 id="Finite-Automata-State-Graphs"><a href="#Finite-Automata-State-Graphs" class="headerlink" title="Finite Automata State Graphs"></a>Finite Automata State Graphs</h4><p><img src="../figures/FASG.png" alt="Finite Automata State Graphs"></p>
+<h4 id="Epsilon-Moves"><a href="#Epsilon-Moves" class="headerlink" title="Epsilon Moves"></a>Epsilon Moves</h4><span>$\epsilon$</span><!-- Has MathJax -->-moves
+
+<p><img src="../figures/epsilon-move.png" alt="Epsilon Moves"></p>
+<p>Machine can move from state A to state B without reading input</p>
+<h4 id="Deterministic-and-Nondeterministic-Automata"><a href="#Deterministic-and-Nondeterministic-Automata" class="headerlink" title="Deterministic and Nondeterministic Automata"></a>Deterministic and Nondeterministic Automata</h4><p>Deterministic Finite Automata (DFA)</p>
+<ul>
+<li>One transition per input per state</li>
+<li>No <span>$\epsilon$</span><!-- Has MathJax -->-moves</li>
+</ul>
+<p>Nondeterministic Finite Automata (NFA)</p>
+<ul>
+<li>Can have multiple transitions for one input in a<br>given state</li>
+<li>Can have <span>$\epsilon$</span><!-- Has MathJax -->-moves</li>
+</ul>
+<h4 id="Execution-of-Finite-Automata"><a href="#Execution-of-Finite-Automata" class="headerlink" title="Execution of Finite Automata"></a>Execution of Finite Automata</h4><p>A DFA can take only one path through the state graph</p>
+<ul>
+<li>Completely determined by input</li>
+</ul>
+<p>NFAs can choose</p>
+<ul>
+<li>Whether to make <span>$\epsilon$</span><!-- Has MathJax -->-moves</li>
+<li>Which of multiple transitions for a single input to take</li>
+</ul>
+<h4 id="Acceptance-of-NFAs"><a href="#Acceptance-of-NFAs" class="headerlink" title="Acceptance of NFAs"></a>Acceptance of NFAs</h4><p>An NFA can get into multiple states</p>
+<p>Rule: NFA accepts if it can get to a final state</p>
+<h4 id="NFA-vs-DFA"><a href="#NFA-vs-DFA" class="headerlink" title="NFA vs. DFA"></a>NFA vs. DFA</h4><p>NFAs and DFAs recognize the same set of languages (regular languages)</p>
+<p>DFAs are faster to execute</p>
+<ul>
+<li>No choices to consider</li>
+</ul>
+<p>For a given language NFA can be simpler than DFA</p>
+<p>DFA can be exponentially larger than NFA</p>
+<h4 id="Regular-Expressions-to-Finite-Automata"><a href="#Regular-Expressions-to-Finite-Automata" class="headerlink" title="Regular Expressions to Finite Automata"></a>Regular Expressions to Finite Automata</h4><p>High-level sketch:</p>
+<p>Lexical Specification -&gt; Regular Expressions -&gt; NFA -&gt; DFA -&gt; Table-driven Implementation of DFA</p>
+<h4 id="Regular-Expressions-to-NFA"><a href="#Regular-Expressions-to-NFA" class="headerlink" title="Regular Expressions to NFA"></a>Regular Expressions to NFA</h4><p><img src="../figures/rexp2nfa1.png" alt="Regular Expressions to NFA 1"></p>
+<p><img src="../figures/rexp2nfa2.png" alt="Regular Expressions to NFA 1"></p>
+<p><img src="../figures/rexp2nfa3.png" alt="Regular Expressions to NFA 1"></p>
+<h4 id="NFA-to-DFA-The-Trick"><a href="#NFA-to-DFA-The-Trick" class="headerlink" title="NFA to DFA: The Trick"></a>NFA to DFA: The Trick</h4><p>Simulate the NFA</p>
+<p>Each state of DFA = a non-empty subset of states of the NFA</p>
+<p>Start state = the set of NFA states reachable through <span>$\epsilon$</span><!-- Has MathJax -->-moves from NFA start state</p>
+<p>Add a transition <span>$S \rightarrow^a S&apos;$</span><!-- Has MathJax --> to DFA iff <span>$S&apos;$</span><!-- Has MathJax --> is the set of NFA states reachable from any<br>state in <span>$S$</span><!-- Has MathJax --> after seeing the input <span>$a$</span><!-- Has MathJax -->, considering <span>$\epsilon$</span><!-- Has MathJax -->-moves as well</p>
+<h4 id="NFA-to-DFA-Remark"><a href="#NFA-to-DFA-Remark" class="headerlink" title="NFA to DFA. Remark"></a>NFA to DFA. Remark</h4><p>An NFA may be in many states at any time</p>
+<p>If there are N states, the NFA must be in some subset of those N states</p>
+<p>How many subsets are there?</p>
+<ul>
+<li><span>$2^N - 1$</span><!-- Has MathJax --> = finitely many
+
+</li>
+</ul>
+<h4 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h4><p><img src="../figures/nfa2dfa_example.png" alt="NFA to DFA Example"></p>
+<h4 id="Implementation"><a href="#Implementation" class="headerlink" title="Implementation"></a>Implementation</h4><p>A DFA can be implemented by a 2D table T</p>
+<ul>
+<li>One dimension is “states”</li>
+<li>Other dimension is “input symbol”</li>
+<li>For every transition <span>$S_i \rightarrow^a S_k$</span><!-- Has MathJax --> define <span>$T[i, a] = k$</span><!-- Has MathJax --></li>
+</ul>
+<p>DFA “execution”</p>
+<ul>
+<li>If in state <span>$S_i$</span><!-- Has MathJax --> and input <span>$a$</span><!-- Has MathJax -->, read <span>$T[i, a] = k$</span><!-- Has MathJax --> and skip to state <span>$S_k$</span><!-- Has MathJax --></li>
+<li>Very efficient</li>
+</ul>
+<p>NFA -&gt; DFA conversion is at the heart of tools such as flex</p>
+<p>DFAs can be huge</p>
+<p>In practice, flex-like tools trade off speed for space in the choice of NFA and DFA representations</p>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p>Slides: <a href="http://web.stanford.edu/class/cs143/lectures/lecture04.pdf" target="_blank" rel="noopener">Finite Automata</a></p>
+<p>Video: <a href="https://lagunita.stanford.edu/courses/Engineering/Compilers/Fall2014/course/" target="_blank" rel="noopener">Compiler Stanford 2014</a></p>
+
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the comments.</noscript>
+        </div>
+    </div>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/tags/">Tag</a></li>
+         
+          <li><a href="/categories/">Category</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Finite-Automata"><span class="toc-number">1.</span> <span class="toc-text">Finite Automata</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Note"><span class="toc-number">1.1.</span> <span class="toc-text">Note</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Specifying-Lexical-Structure-Using-Regular-Expressions"><span class="toc-number">1.1.1.</span> <span class="toc-text">Specifying Lexical Structure Using Regular Expressions</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Regular-Expressions-gt-Lexical-Spec"><span class="toc-number">1.1.2.</span> <span class="toc-text">Regular Expressions =&gt; Lexical Spec.</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Ambiguities"><span class="toc-number">1.1.3.</span> <span class="toc-text">Ambiguities</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Error-handling"><span class="toc-number">1.1.4.</span> <span class="toc-text">Error handling</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Summary"><span class="toc-number">1.1.5.</span> <span class="toc-text">Summary</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Finite-Automata-1"><span class="toc-number">1.1.6.</span> <span class="toc-text">Finite Automata</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Finite-Automata-State-Graphs"><span class="toc-number">1.1.7.</span> <span class="toc-text">Finite Automata State Graphs</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Epsilon-Moves"><span class="toc-number">1.1.8.</span> <span class="toc-text">Epsilon Moves</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Deterministic-and-Nondeterministic-Automata"><span class="toc-number">1.1.9.</span> <span class="toc-text">Deterministic and Nondeterministic Automata</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Execution-of-Finite-Automata"><span class="toc-number">1.1.10.</span> <span class="toc-text">Execution of Finite Automata</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Acceptance-of-NFAs"><span class="toc-number">1.1.11.</span> <span class="toc-text">Acceptance of NFAs</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#NFA-vs-DFA"><span class="toc-number">1.1.12.</span> <span class="toc-text">NFA vs. DFA</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Regular-Expressions-to-Finite-Automata"><span class="toc-number">1.1.13.</span> <span class="toc-text">Regular Expressions to Finite Automata</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Regular-Expressions-to-NFA"><span class="toc-number">1.1.14.</span> <span class="toc-text">Regular Expressions to NFA</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#NFA-to-DFA-The-Trick"><span class="toc-number">1.1.15.</span> <span class="toc-text">NFA to DFA: The Trick</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#NFA-to-DFA-Remark"><span class="toc-number">1.1.16.</span> <span class="toc-text">NFA to DFA. Remark</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Example"><span class="toc-number">1.1.17.</span> <span class="toc-text">Example</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Implementation"><span class="toc-number">1.1.18.</span> <span class="toc-text">Implementation</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Reference"><span class="toc-number">1.2.</span> <span class="toc-text">Reference</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://blog.yilin.dev/2019/05/21/Learn-compiler-4/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://blog.yilin.dev/2019/05/21/Learn-compiler-4/&text=Learning Compiler 4"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://blog.yilin.dev/2019/05/21/Learn-compiler-4/&title=Learning Compiler 4"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blog.yilin.dev/2019/05/21/Learn-compiler-4/&is_video=false&description=Learning Compiler 4"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Learning Compiler 4&body=Check out this article: https://blog.yilin.dev/2019/05/21/Learn-compiler-4/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://blog.yilin.dev/2019/05/21/Learn-compiler-4/&title=Learning Compiler 4"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://blog.yilin.dev/2019/05/21/Learn-compiler-4/&title=Learning Compiler 4"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://blog.yilin.dev/2019/05/21/Learn-compiler-4/&title=Learning Compiler 4"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://blog.yilin.dev/2019/05/21/Learn-compiler-4/&title=Learning Compiler 4"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://blog.yilin.dev/2019/05/21/Learn-compiler-4/&name=Learning Compiler 4&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 Yilin
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/tags/">Tag</a></li>
+         
+          <li><a href="/categories/">Category</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-139642099-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'Spacebody';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+</html>

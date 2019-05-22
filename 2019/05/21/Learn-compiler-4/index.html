@@ -6,13 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="Finite AutomataNoteSpecifying Lexical Structure Using Regular ExpressionsUnion: $A|B\equiv A + B$Option: $A + \epsilon \equiv A?$Range: $&amp;apos;a&amp;apos;+&amp;apos;b&amp;apos;+\dots+&amp;apos;z&amp;apos;\equiv [a-z]$Exc">
+    <meta name="description" content="NoteSpecifying Lexical Structure Using Regular ExpressionsUnion: $A|B\equiv A + B$Option: $A + \epsilon \equiv A?$Range: $&amp;apos;a&amp;apos;+&amp;apos;b&amp;apos;+\dots+&amp;apos;z&amp;apos;\equiv [a-z]$Excluded range: co">
 <meta name="keywords" content="Learning,Compiler">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Learning Compiler 4 Finite Automata">
 <meta property="og:url" content="https://blog.yilin.dev/2019/05/21/Learn-compiler-4/index.html">
 <meta property="og:site_name" content="风居住的街道">
-<meta property="og:description" content="Finite AutomataNoteSpecifying Lexical Structure Using Regular ExpressionsUnion: $A|B\equiv A + B$Option: $A + \epsilon \equiv A?$Range: $&amp;apos;a&amp;apos;+&amp;apos;b&amp;apos;+\dots+&amp;apos;z&amp;apos;\equiv [a-z]$Exc">
+<meta property="og:description" content="NoteSpecifying Lexical Structure Using Regular ExpressionsUnion: $A|B\equiv A + B$Option: $A + \epsilon \equiv A?$Range: $&amp;apos;a&amp;apos;+&amp;apos;b&amp;apos;+\dots+&amp;apos;z&amp;apos;\equiv [a-z]$Excluded range: co">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://blog.yilin.dev/figures/FASG.png">
 <meta property="og:image" content="https://blog.yilin.dev/figures/epsilon-move.png">
@@ -20,10 +20,10 @@
 <meta property="og:image" content="https://blog.yilin.dev/figures/rexp2nfa2.png">
 <meta property="og:image" content="https://blog.yilin.dev/figures/rexp2nfa3.png">
 <meta property="og:image" content="https://blog.yilin.dev/figures/nfa2dfa_example.png">
-<meta property="og:updated_time" content="2019-05-22T11:48:39.979Z">
+<meta property="og:updated_time" content="2019-05-22T12:14:01.043Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Learning Compiler 4 Finite Automata">
-<meta name="twitter:description" content="Finite AutomataNoteSpecifying Lexical Structure Using Regular ExpressionsUnion: $A|B\equiv A + B$Option: $A + \epsilon \equiv A?$Range: $&amp;apos;a&amp;apos;+&amp;apos;b&amp;apos;+\dots+&amp;apos;z&amp;apos;\equiv [a-z]$Exc">
+<meta name="twitter:description" content="NoteSpecifying Lexical Structure Using Regular ExpressionsUnion: $A|B\equiv A + B$Option: $A + \epsilon \equiv A?$Range: $&amp;apos;a&amp;apos;+&amp;apos;b&amp;apos;+\dots+&amp;apos;z&amp;apos;\equiv [a-z]$Excluded range: co">
 <meta name="twitter:image" content="https://blog.yilin.dev/figures/FASG.png">
     
     
@@ -114,7 +114,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Finite-Automata"><span class="toc-number">1.</span> <span class="toc-text">Finite Automata</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Note"><span class="toc-number">1.1.</span> <span class="toc-text">Note</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Specifying-Lexical-Structure-Using-Regular-Expressions"><span class="toc-number">1.1.1.</span> <span class="toc-text">Specifying Lexical Structure Using Regular Expressions</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Regular-Expressions-gt-Lexical-Spec"><span class="toc-number">1.1.2.</span> <span class="toc-text">Regular Expressions =&gt; Lexical Spec.</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Ambiguities"><span class="toc-number">1.1.3.</span> <span class="toc-text">Ambiguities</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Error-handling"><span class="toc-number">1.1.4.</span> <span class="toc-text">Error handling</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Summary"><span class="toc-number">1.1.5.</span> <span class="toc-text">Summary</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Finite-Automata-1"><span class="toc-number">1.1.6.</span> <span class="toc-text">Finite Automata</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Finite-Automata-State-Graphs"><span class="toc-number">1.1.7.</span> <span class="toc-text">Finite Automata State Graphs</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Epsilon-Moves"><span class="toc-number">1.1.8.</span> <span class="toc-text">Epsilon Moves</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Deterministic-and-Nondeterministic-Automata"><span class="toc-number">1.1.9.</span> <span class="toc-text">Deterministic and Nondeterministic Automata</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Execution-of-Finite-Automata"><span class="toc-number">1.1.10.</span> <span class="toc-text">Execution of Finite Automata</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Acceptance-of-NFAs"><span class="toc-number">1.1.11.</span> <span class="toc-text">Acceptance of NFAs</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#NFA-vs-DFA"><span class="toc-number">1.1.12.</span> <span class="toc-text">NFA vs. DFA</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Regular-Expressions-to-Finite-Automata"><span class="toc-number">1.1.13.</span> <span class="toc-text">Regular Expressions to Finite Automata</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Regular-Expressions-to-NFA"><span class="toc-number">1.1.14.</span> <span class="toc-text">Regular Expressions to NFA</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#NFA-to-DFA-The-Trick"><span class="toc-number">1.1.15.</span> <span class="toc-text">NFA to DFA: The Trick</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#NFA-to-DFA-Remark"><span class="toc-number">1.1.16.</span> <span class="toc-text">NFA to DFA. Remark</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Example"><span class="toc-number">1.1.17.</span> <span class="toc-text">Example</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Implementation"><span class="toc-number">1.1.18.</span> <span class="toc-text">Implementation</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Reference"><span class="toc-number">1.2.</span> <span class="toc-text">Reference</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Note"><span class="toc-number">1.</span> <span class="toc-text">Note</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Specifying-Lexical-Structure-Using-Regular-Expressions"><span class="toc-number">1.1.</span> <span class="toc-text">Specifying Lexical Structure Using Regular Expressions</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Regular-Expressions-gt-Lexical-Spec"><span class="toc-number">1.2.</span> <span class="toc-text">Regular Expressions =&gt; Lexical Spec.</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ambiguities"><span class="toc-number">1.3.</span> <span class="toc-text">Ambiguities</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Error-handling"><span class="toc-number">1.4.</span> <span class="toc-text">Error handling</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Summary"><span class="toc-number">1.5.</span> <span class="toc-text">Summary</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Finite-Automata"><span class="toc-number">1.6.</span> <span class="toc-text">Finite Automata</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Finite-Automata-State-Graphs"><span class="toc-number">1.7.</span> <span class="toc-text">Finite Automata State Graphs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Epsilon-Moves"><span class="toc-number">1.8.</span> <span class="toc-text">Epsilon Moves</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deterministic-and-Nondeterministic-Automata"><span class="toc-number">1.9.</span> <span class="toc-text">Deterministic and Nondeterministic Automata</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Execution-of-Finite-Automata"><span class="toc-number">1.10.</span> <span class="toc-text">Execution of Finite Automata</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Acceptance-of-NFAs"><span class="toc-number">1.11.</span> <span class="toc-text">Acceptance of NFAs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#NFA-vs-DFA"><span class="toc-number">1.12.</span> <span class="toc-text">NFA vs. DFA</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Regular-Expressions-to-Finite-Automata"><span class="toc-number">1.13.</span> <span class="toc-text">Regular Expressions to Finite Automata</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Regular-Expressions-to-NFA"><span class="toc-number">1.14.</span> <span class="toc-text">Regular Expressions to NFA</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#NFA-to-DFA-The-Trick"><span class="toc-number">1.15.</span> <span class="toc-text">NFA to DFA: The Trick</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#NFA-to-DFA-Remark"><span class="toc-number">1.16.</span> <span class="toc-text">NFA to DFA. Remark</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Example"><span class="toc-number">1.17.</span> <span class="toc-text">Example</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Implementation"><span class="toc-number">1.18.</span> <span class="toc-text">Implementation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Reference"><span class="toc-number">1.19.</span> <span class="toc-text">Reference</span></a></li></ol></li></ol>
     </div>
   </span>
 </div>
@@ -140,7 +140,7 @@
       
         <time datetime="2019-05-21T05:26:17.236Z" itemprop="datePublished">2019-05-21</time>
         
-        (Updated: <time datetime="2019-05-22T11:48:39.979Z" itemprop="dateModified">2019-05-22</time>)
+        (Updated: <time datetime="2019-05-22T12:14:01.043Z" itemprop="dateModified">2019-05-22</time>)
         
       
     </div>
@@ -165,8 +165,8 @@
   
 
   <div class="content" itemprop="articleBody">
-    <h2 id="Finite-Automata"><a href="#Finite-Automata" class="headerlink" title="Finite Automata"></a>Finite Automata</h2><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><h4 id="Specifying-Lexical-Structure-Using-Regular-Expressions"><a href="#Specifying-Lexical-Structure-Using-Regular-Expressions" class="headerlink" title="Specifying Lexical Structure Using Regular Expressions"></a>Specifying Lexical Structure Using Regular Expressions</h4><p>Union: <span>$A|B\equiv A + B$</span><!-- Has MathJax --><br>Option: <span>$A + \epsilon \equiv A?$</span><!-- Has MathJax --><br>Range: <span>$&apos;a&apos;+&apos;b&apos;+\dots+&apos;z&apos;\equiv [a-z]$</span><!-- Has MathJax --><br>Excluded range: complement of <span>$[a-z] \equiv [\hat{}a-z]$</span><!-- Has MathJax --></p>
-<h4 id="Regular-Expressions-gt-Lexical-Spec"><a href="#Regular-Expressions-gt-Lexical-Spec" class="headerlink" title="Regular Expressions =&gt; Lexical Spec."></a>Regular Expressions =&gt; Lexical Spec.</h4><ol>
+    <h2 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h2><h3 id="Specifying-Lexical-Structure-Using-Regular-Expressions"><a href="#Specifying-Lexical-Structure-Using-Regular-Expressions" class="headerlink" title="Specifying Lexical Structure Using Regular Expressions"></a>Specifying Lexical Structure Using Regular Expressions</h3><p>Union: <span>$A|B\equiv A + B$</span><!-- Has MathJax --><br>Option: <span>$A + \epsilon \equiv A?$</span><!-- Has MathJax --><br>Range: <span>$&apos;a&apos;+&apos;b&apos;+\dots+&apos;z&apos;\equiv [a-z]$</span><!-- Has MathJax --><br>Excluded range: complement of <span>$[a-z] \equiv [\hat{}a-z]$</span><!-- Has MathJax --></p>
+<h3 id="Regular-Expressions-gt-Lexical-Spec"><a href="#Regular-Expressions-gt-Lexical-Spec" class="headerlink" title="Regular Expressions =&gt; Lexical Spec."></a>Regular Expressions =&gt; Lexical Spec.</h3><ol>
 <li>Write a rexp for the lexemes of each token</li>
 <li>Construct <span>$R$</span><!-- Has MathJax -->, matching all lexemes for all tokens<ul>
 <li><span>$R = \text{Keyword} + \text{Identifier} + \text{Number} + \dots \\ = R_1 + R_2 + \dots$</span><!-- Has MathJax --></li>
@@ -179,15 +179,15 @@
 <li>If success, then we know that <span>$x_1\dots x_i\in L(R_j)$</span><!-- Has MathJax --> for some <span>$j$</span><!-- Has MathJax --></li>
 <li>Remove <span>$x_1\dots x_i$</span><!-- Has MathJax --> from input and go to (3)</li>
 </ol>
-<h4 id="Ambiguities"><a href="#Ambiguities" class="headerlink" title="Ambiguities"></a>Ambiguities</h4><p>Rule: Pick longest possible string in <span>$L(R)$</span><!-- Has MathJax --></p>
+<h3 id="Ambiguities"><a href="#Ambiguities" class="headerlink" title="Ambiguities"></a>Ambiguities</h3><p>Rule: Pick longest possible string in <span>$L(R)$</span><!-- Has MathJax --></p>
 <p>Rule: Use rule listed first</p>
-<h4 id="Error-handling"><a href="#Error-handling" class="headerlink" title="Error handling"></a>Error handling</h4><p>No rule matches a prefix of input</p>
+<h3 id="Error-handling"><a href="#Error-handling" class="headerlink" title="Error handling"></a>Error handling</h3><p>No rule matches a prefix of input</p>
 <p>Solution:</p>
 <ul>
 <li>Write a rule matching all “bad” strings</li>
 <li>Put it last (lowest priority)</li>
 </ul>
-<h4 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h4><p>Regular expressions provide a concise notation for string patterns</p>
+<h3 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h3><p>Regular expressions provide a concise notation for string patterns</p>
 <p>Use in lexical analysis requires small extensions</p>
 <ul>
 <li>To resolve ambiguities</li>
@@ -198,7 +198,7 @@
 <li>Require only single pass over the input</li>
 <li>Few operations per character (table lookup)</li>
 </ul>
-<h4 id="Finite-Automata-1"><a href="#Finite-Automata-1" class="headerlink" title="Finite Automata"></a>Finite Automata</h4><p>Regular expressions = specification</p>
+<h3 id="Finite-Automata"><a href="#Finite-Automata" class="headerlink" title="Finite Automata"></a>Finite Automata</h3><p>Regular expressions = specification</p>
 <p>Finite automata = implementation</p>
 <p>A finite automaton consists of –  An input alphabet <span>$\Sigma$</span><!-- Has MathJax --></p>
 <ul>
@@ -211,11 +211,11 @@
 <p>Is read: In state <span>$s_1$</span><!-- Has MathJax --> on input “a” go to state <span>$s_2$</span><!-- Has MathJax --></p>
 <p>If end of input and in accepting state =&gt; accept</p>
 <p>Otherwise =&gt; reject</p>
-<h4 id="Finite-Automata-State-Graphs"><a href="#Finite-Automata-State-Graphs" class="headerlink" title="Finite Automata State Graphs"></a>Finite Automata State Graphs</h4><p><img src="/figures/FASG.png" alt="Finite Automata State Graphs"></p>
-<h4 id="Epsilon-Moves"><a href="#Epsilon-Moves" class="headerlink" title="Epsilon Moves"></a>Epsilon Moves</h4><p>$\epsilon$-moves</p>
+<h3 id="Finite-Automata-State-Graphs"><a href="#Finite-Automata-State-Graphs" class="headerlink" title="Finite Automata State Graphs"></a>Finite Automata State Graphs</h3><p><img src="/figures/FASG.png" alt="Finite Automata State Graphs"></p>
+<h3 id="Epsilon-Moves"><a href="#Epsilon-Moves" class="headerlink" title="Epsilon Moves"></a>Epsilon Moves</h3><p>$\epsilon$-moves</p>
 <p><img src="/figures/epsilon-move.png" alt="Epsilon Moves"></p>
 <p>Machine can move from state A to state B without reading input</p>
-<h4 id="Deterministic-and-Nondeterministic-Automata"><a href="#Deterministic-and-Nondeterministic-Automata" class="headerlink" title="Deterministic and Nondeterministic Automata"></a>Deterministic and Nondeterministic Automata</h4><p>Deterministic Finite Automata (DFA)</p>
+<h3 id="Deterministic-and-Nondeterministic-Automata"><a href="#Deterministic-and-Nondeterministic-Automata" class="headerlink" title="Deterministic and Nondeterministic Automata"></a>Deterministic and Nondeterministic Automata</h3><p>Deterministic Finite Automata (DFA)</p>
 <ul>
 <li>One transition per input per state</li>
 <li>No <span>$\epsilon$</span><!-- Has MathJax -->-moves</li>
@@ -225,7 +225,7 @@
 <li>Can have multiple transitions for one input in a<br>given state</li>
 <li>Can have <span>$\epsilon$</span><!-- Has MathJax -->-moves</li>
 </ul>
-<h4 id="Execution-of-Finite-Automata"><a href="#Execution-of-Finite-Automata" class="headerlink" title="Execution of Finite Automata"></a>Execution of Finite Automata</h4><p>A DFA can take only one path through the state graph</p>
+<h3 id="Execution-of-Finite-Automata"><a href="#Execution-of-Finite-Automata" class="headerlink" title="Execution of Finite Automata"></a>Execution of Finite Automata</h3><p>A DFA can take only one path through the state graph</p>
 <ul>
 <li>Completely determined by input</li>
 </ul>
@@ -234,25 +234,25 @@
 <li>Whether to make <span>$\epsilon$</span><!-- Has MathJax -->-moves</li>
 <li>Which of multiple transitions for a single input to take</li>
 </ul>
-<h4 id="Acceptance-of-NFAs"><a href="#Acceptance-of-NFAs" class="headerlink" title="Acceptance of NFAs"></a>Acceptance of NFAs</h4><p>An NFA can get into multiple states</p>
+<h3 id="Acceptance-of-NFAs"><a href="#Acceptance-of-NFAs" class="headerlink" title="Acceptance of NFAs"></a>Acceptance of NFAs</h3><p>An NFA can get into multiple states</p>
 <p>Rule: NFA accepts if it can get to a final state</p>
-<h4 id="NFA-vs-DFA"><a href="#NFA-vs-DFA" class="headerlink" title="NFA vs. DFA"></a>NFA vs. DFA</h4><p>NFAs and DFAs recognize the same set of languages (regular languages)</p>
+<h3 id="NFA-vs-DFA"><a href="#NFA-vs-DFA" class="headerlink" title="NFA vs. DFA"></a>NFA vs. DFA</h3><p>NFAs and DFAs recognize the same set of languages (regular languages)</p>
 <p>DFAs are faster to execute</p>
 <ul>
 <li>No choices to consider</li>
 </ul>
 <p>For a given language NFA can be simpler than DFA</p>
 <p>DFA can be exponentially larger than NFA</p>
-<h4 id="Regular-Expressions-to-Finite-Automata"><a href="#Regular-Expressions-to-Finite-Automata" class="headerlink" title="Regular Expressions to Finite Automata"></a>Regular Expressions to Finite Automata</h4><p>High-level sketch:</p>
+<h3 id="Regular-Expressions-to-Finite-Automata"><a href="#Regular-Expressions-to-Finite-Automata" class="headerlink" title="Regular Expressions to Finite Automata"></a>Regular Expressions to Finite Automata</h3><p>High-level sketch:</p>
 <p>Lexical Specification -&gt; Regular Expressions -&gt; NFA -&gt; DFA -&gt; Table-driven Implementation of DFA</p>
-<h4 id="Regular-Expressions-to-NFA"><a href="#Regular-Expressions-to-NFA" class="headerlink" title="Regular Expressions to NFA"></a>Regular Expressions to NFA</h4><p><img src="/figures/rexp2nfa1.png" alt="Regular Expressions to NFA 1"></p>
+<h3 id="Regular-Expressions-to-NFA"><a href="#Regular-Expressions-to-NFA" class="headerlink" title="Regular Expressions to NFA"></a>Regular Expressions to NFA</h3><p><img src="/figures/rexp2nfa1.png" alt="Regular Expressions to NFA 1"></p>
 <p><img src="/figures/rexp2nfa2.png" alt="Regular Expressions to NFA 1"></p>
 <p><img src="/figures/rexp2nfa3.png" alt="Regular Expressions to NFA 1"></p>
-<h4 id="NFA-to-DFA-The-Trick"><a href="#NFA-to-DFA-The-Trick" class="headerlink" title="NFA to DFA: The Trick"></a>NFA to DFA: The Trick</h4><p>Simulate the NFA</p>
+<h3 id="NFA-to-DFA-The-Trick"><a href="#NFA-to-DFA-The-Trick" class="headerlink" title="NFA to DFA: The Trick"></a>NFA to DFA: The Trick</h3><p>Simulate the NFA</p>
 <p>Each state of DFA = a non-empty subset of states of the NFA</p>
 <p>Start state = the set of NFA states reachable through <span>$\epsilon$</span><!-- Has MathJax -->-moves from NFA start state</p>
 <p>Add a transition <span>$S \rightarrow^a S&apos;$</span><!-- Has MathJax --> to DFA iff <span>$S&apos;$</span><!-- Has MathJax --> is the set of NFA states reachable from any<br>state in <span>$S$</span><!-- Has MathJax --> after seeing the input <span>$a$</span><!-- Has MathJax -->, considering <span>$\epsilon$</span><!-- Has MathJax -->-moves as well</p>
-<h4 id="NFA-to-DFA-Remark"><a href="#NFA-to-DFA-Remark" class="headerlink" title="NFA to DFA. Remark"></a>NFA to DFA. Remark</h4><p>An NFA may be in many states at any time</p>
+<h3 id="NFA-to-DFA-Remark"><a href="#NFA-to-DFA-Remark" class="headerlink" title="NFA to DFA. Remark"></a>NFA to DFA. Remark</h3><p>An NFA may be in many states at any time</p>
 <p>If there are N states, the NFA must be in some subset of those N states</p>
 <p>How many subsets are there?</p>
 <ul>
@@ -260,8 +260,8 @@
 
 </li>
 </ul>
-<h4 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h4><p><img src="/figures/nfa2dfa_example.png" alt="NFA to DFA Example"></p>
-<h4 id="Implementation"><a href="#Implementation" class="headerlink" title="Implementation"></a>Implementation</h4><p>A DFA can be implemented by a 2D table T</p>
+<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><p><img src="/figures/nfa2dfa_example.png" alt="NFA to DFA Example"></p>
+<h3 id="Implementation"><a href="#Implementation" class="headerlink" title="Implementation"></a>Implementation</h3><p>A DFA can be implemented by a 2D table T</p>
 <ul>
 <li>One dimension is “states”</li>
 <li>Other dimension is “input symbol”</li>
@@ -312,7 +312,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Finite-Automata"><span class="toc-number">1.</span> <span class="toc-text">Finite Automata</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Note"><span class="toc-number">1.1.</span> <span class="toc-text">Note</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Specifying-Lexical-Structure-Using-Regular-Expressions"><span class="toc-number">1.1.1.</span> <span class="toc-text">Specifying Lexical Structure Using Regular Expressions</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Regular-Expressions-gt-Lexical-Spec"><span class="toc-number">1.1.2.</span> <span class="toc-text">Regular Expressions =&gt; Lexical Spec.</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Ambiguities"><span class="toc-number">1.1.3.</span> <span class="toc-text">Ambiguities</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Error-handling"><span class="toc-number">1.1.4.</span> <span class="toc-text">Error handling</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Summary"><span class="toc-number">1.1.5.</span> <span class="toc-text">Summary</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Finite-Automata-1"><span class="toc-number">1.1.6.</span> <span class="toc-text">Finite Automata</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Finite-Automata-State-Graphs"><span class="toc-number">1.1.7.</span> <span class="toc-text">Finite Automata State Graphs</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Epsilon-Moves"><span class="toc-number">1.1.8.</span> <span class="toc-text">Epsilon Moves</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Deterministic-and-Nondeterministic-Automata"><span class="toc-number">1.1.9.</span> <span class="toc-text">Deterministic and Nondeterministic Automata</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Execution-of-Finite-Automata"><span class="toc-number">1.1.10.</span> <span class="toc-text">Execution of Finite Automata</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Acceptance-of-NFAs"><span class="toc-number">1.1.11.</span> <span class="toc-text">Acceptance of NFAs</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#NFA-vs-DFA"><span class="toc-number">1.1.12.</span> <span class="toc-text">NFA vs. DFA</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Regular-Expressions-to-Finite-Automata"><span class="toc-number">1.1.13.</span> <span class="toc-text">Regular Expressions to Finite Automata</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Regular-Expressions-to-NFA"><span class="toc-number">1.1.14.</span> <span class="toc-text">Regular Expressions to NFA</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#NFA-to-DFA-The-Trick"><span class="toc-number">1.1.15.</span> <span class="toc-text">NFA to DFA: The Trick</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#NFA-to-DFA-Remark"><span class="toc-number">1.1.16.</span> <span class="toc-text">NFA to DFA. Remark</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Example"><span class="toc-number">1.1.17.</span> <span class="toc-text">Example</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Implementation"><span class="toc-number">1.1.18.</span> <span class="toc-text">Implementation</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Reference"><span class="toc-number">1.2.</span> <span class="toc-text">Reference</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Note"><span class="toc-number">1.</span> <span class="toc-text">Note</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Specifying-Lexical-Structure-Using-Regular-Expressions"><span class="toc-number">1.1.</span> <span class="toc-text">Specifying Lexical Structure Using Regular Expressions</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Regular-Expressions-gt-Lexical-Spec"><span class="toc-number">1.2.</span> <span class="toc-text">Regular Expressions =&gt; Lexical Spec.</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ambiguities"><span class="toc-number">1.3.</span> <span class="toc-text">Ambiguities</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Error-handling"><span class="toc-number">1.4.</span> <span class="toc-text">Error handling</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Summary"><span class="toc-number">1.5.</span> <span class="toc-text">Summary</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Finite-Automata"><span class="toc-number">1.6.</span> <span class="toc-text">Finite Automata</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Finite-Automata-State-Graphs"><span class="toc-number">1.7.</span> <span class="toc-text">Finite Automata State Graphs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Epsilon-Moves"><span class="toc-number">1.8.</span> <span class="toc-text">Epsilon Moves</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deterministic-and-Nondeterministic-Automata"><span class="toc-number">1.9.</span> <span class="toc-text">Deterministic and Nondeterministic Automata</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Execution-of-Finite-Automata"><span class="toc-number">1.10.</span> <span class="toc-text">Execution of Finite Automata</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Acceptance-of-NFAs"><span class="toc-number">1.11.</span> <span class="toc-text">Acceptance of NFAs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#NFA-vs-DFA"><span class="toc-number">1.12.</span> <span class="toc-text">NFA vs. DFA</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Regular-Expressions-to-Finite-Automata"><span class="toc-number">1.13.</span> <span class="toc-text">Regular Expressions to Finite Automata</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Regular-Expressions-to-NFA"><span class="toc-number">1.14.</span> <span class="toc-text">Regular Expressions to NFA</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#NFA-to-DFA-The-Trick"><span class="toc-number">1.15.</span> <span class="toc-text">NFA to DFA: The Trick</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#NFA-to-DFA-Remark"><span class="toc-number">1.16.</span> <span class="toc-text">NFA to DFA. Remark</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Example"><span class="toc-number">1.17.</span> <span class="toc-text">Example</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Implementation"><span class="toc-number">1.18.</span> <span class="toc-text">Implementation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Reference"><span class="toc-number">1.19.</span> <span class="toc-text">Reference</span></a></li></ol></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">

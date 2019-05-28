@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>Learning Bitcoin and Cryptocurrencies 1 Basic Concepts</title>
+      <link href="/2019/05/28/Learn-Bitcoin-and-Cryptocurrencies-1/"/>
+      <url>/2019/05/28/Learn-Bitcoin-and-Cryptocurrencies-1/</url>
+      
+        <content type="html"><![CDATA[<h2 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h2><h3 id="What-is-Bitcoin"><a href="#What-is-Bitcoin" class="headerlink" title="What is Bitcoin?"></a>What is Bitcoin?</h3><h4 id="Basic-Concept"><a href="#Basic-Concept" class="headerlink" title="Basic Concept"></a>Basic Concept</h4><p>The first and most widely used cryptocurrency: completely digital, decentralized, currency built on principles of computer science, cryptography, and economics</p><p>Bitcoin: refers to the community, the network, and the software</p><p>bitcoins: the currency itself, a unit</p><p>Inspiration for the blockchain: the underlying data structure that stores a permanent history of all transactions to ever occur the history of bitcoin</p><h4 id="The-Cypherpunks-Movement"><a href="#The-Cypherpunks-Movement" class="headerlink" title="The Cypherpunks Movement"></a>The Cypherpunks Movement</h4><p>Cypherpunks = a group of people who advocate for the protection of privacy using cyptography</p><p>Bitcoin was created by Satoshi Nakamoto in 2009. He created the first ever decentralized, pseudonymous, and trustless system for transactions</p><h4 id="Satoshi-Nakamoto’s-Innovation"><a href="#Satoshi-Nakamoto’s-Innovation" class="headerlink" title="Satoshi Nakamoto’s Innovation"></a>Satoshi Nakamoto’s Innovation</h4><p>Bitcoin attempts to solve two problems that decentralized networks typically face:</p><ul><li>Inconsistent transactions records held by different nodes</li><li>Malicious pseudonymous actors might broadcast false messages and divide the network</li></ul><p>Double spending attack: asynchronous records held by different nodes</p><p>The blockchain and consensus protocol are the solution</p><h3 id="Bitcoin-vs-Banks"><a href="#Bitcoin-vs-Banks" class="headerlink" title="Bitcoin vs. Banks"></a>Bitcoin vs. Banks</h3><h4 id="Banks-Services"><a href="#Banks-Services" class="headerlink" title="Banks Services"></a>Banks Services</h4><p>Account and identity management</p><p>Service</p><p>Record management</p><p>Trust</p><h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://courses.edx.org/courses/course-v1:BerkeleyX+CS198.1x+3T2018" target="_blank" rel="noopener">BerkeleyX: CS198.1x Bitcoin and Cryptocurrencie</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 学不死就往死里学 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Learning </tag>
+            
+            <tag> Bitcoin </tag>
+            
+            <tag> Cryptocurrencies </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Learning Compiler 4 Finite Automata</title>
       <link href="/2019/05/21/Learn-compiler-4/"/>
       <url>/2019/05/21/Learn-compiler-4/</url>

@@ -25,7 +25,11 @@
 var searchFunc = function(path, searchId, contentId) {
 
   function stripHtml(html) {
-    html = html.replace(/<style([\s\S]*?)<\/style>/gi, "");
+    let previous;
+    do {
+      previous = html;
+      html = html.replace(/<style([\s\S]*?)<\/style>/gi, "");
+    } while (html !== previous);
     html = html.replace(/<script([\s\S]*?)<\/script>/gi, "");
     html = html.replace(/<figure([\s\S]*?)<\/figure>/gi, "");
     html = html.replace(/<\/div>/ig, "\n");
